@@ -21,6 +21,7 @@ import type {
 } from './types';
 
 const PACKAGE_NAME = 'oh-my-openagent-slim';
+const PLUGIN_NAME = '@a4hgehad/oh-my-openagent-slim';
 
 /**
  * Strip JSON comments (single-line // and multi-line) and trailing commas for JSONC support.
@@ -119,11 +120,14 @@ export async function addPluginToOpenCodeConfig(): Promise<ConfigMergeResult> {
 
     // Remove existing oh-my-openagent-slim entries
     const filteredPlugins = plugins.filter(
-      (p) => p !== PACKAGE_NAME && !p.startsWith(`${PACKAGE_NAME}@`),
+      (p) =>
+        p !== PLUGIN_NAME &&
+        p !== PACKAGE_NAME &&
+        !p.startsWith(`${PACKAGE_NAME}@`),
     );
 
-    // Add fresh entry
-    filteredPlugins.push(PACKAGE_NAME);
+    // Add fresh entry with full scoped name
+    filteredPlugins.push(PLUGIN_NAME);
     config.plugin = filteredPlugins;
 
     writeConfig(configPath, config);
