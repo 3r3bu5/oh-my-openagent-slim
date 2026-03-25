@@ -268,7 +268,7 @@ generateLiteConfig() [providers.ts]
                   │
                   ▼
 ┌─────────────────────────────────────────┐
-│ For each agent (orchestrator, oracle,  │
+│ For each agent (orchestrator, Oracle,  │
 │ librarian, explorer, designer, fixer):  │
 │                                         │
 │ 1. Get model + variant from MAPPING     │
@@ -406,4 +406,4 @@ InstallConfig (preferences)
 
 | Name | Agents | Description |
 |------|--------|-------------|
-| `requesting-code-review` | oracle | Code review template for reviewer subagents |
+| `requesting-code-review` | Oracle | Code review template for reviewer subagents |

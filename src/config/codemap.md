@@ -29,7 +29,7 @@ The `src/config/` module is responsible for:
 - `orchestrator`: can spawn all subagents (full delegation)
 - `fixer`: leaf node — prompt forbids delegation
 - `designer`: leaf node (cannot spawn subagents)
-- `explorer`, `librarian`, `oracle`: leaf nodes (cannot spawn subagents)
+- `explorer`, `librarian`, `Oracle`: leaf nodes (cannot spawn subagents)
 
 ### Core Abstractions
 
@@ -69,8 +69,8 @@ FailoverConfig
 
 **Agent Names**
 - `ORCHESTRATOR_NAME`: `'orchestrator'`
-- `SUBAGENT_NAMES`: `['explorer', 'librarian', 'oracle', 'designer', 'fixer']`
-- `ALL_AGENT_NAMES`: `['orchestrator', 'explorer', 'librarian', 'oracle', 'designer', 'fixer']`
+- `SUBAGENT_NAMES`: `['explorer', 'librarian', 'Oracle', 'designer', 'fixer']`
+- `ALL_AGENT_NAMES`: `['orchestrator', 'explorer', 'librarian', 'Oracle', 'designer', 'fixer']`
 - `AGENT_ALIASES`: Legacy name mappings (`{ explore: 'explorer' }`)
 
 **TypeScript Types**
@@ -203,7 +203,7 @@ src/config/
 | Agent      | Default Model           |
 |------------|-------------------------|
 | orchestrator | runtime-resolved     |
-| oracle      | openai/gpt-5.4        |
+| Oracle      | openai/gpt-5.4        |
 | librarian   | openai/gpt-5.4-mini   |
 | explorer    | openai/gpt-5.4-mini   |
 | designer    | openai/gpt-5.4-mini   |
@@ -212,12 +212,12 @@ src/config/
 ### Delegation Rules
 | Parent Agent | Can Spawn                     |
 |--------------|-------------------------------|
-| orchestrator | explorer, librarian, oracle, designer, fixer |
+| orchestrator | explorer, librarian, Oracle, designer, fixer |
 | fixer        | (none - leaf node)            |
 | designer     | (none - leaf node)            |
 | explorer     | (none - leaf node)            |
 | librarian    | (none - leaf node)            |
-| oracle       | (none - leaf node)            |
+| Oracle       | (none - leaf node)            |
 
 ## Error Handling
 

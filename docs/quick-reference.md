@@ -50,7 +50,7 @@ Uses OpenAI models exclusively:
   "presets": {
     "openai": {
       "Ra": { "model": "openai/gpt-5.4", "skills": ["*"], "mcps": ["websearch"] },
-      "oracle": { "model": "openai/gpt-5.4", "variant": "high", "skills": [], "mcps": [] },
+      "Oracle": { "model": "openai/gpt-5.4", "variant": "high", "skills": [], "mcps": [] },
       "Thoth": { "model": "openai/gpt-5.4-mini", "variant": "low", "skills": [], "mcps": ["websearch", "context7", "grep_app"] },
       "Horus": { "model": "openai/gpt-5.4-mini", "variant": "low", "skills": [], "mcps": [] },
       "Bastet": { "model": "openai/gpt-5.4-mini", "variant": "medium", "skills": ["agent-browser"], "mcps": [] },
@@ -98,7 +98,7 @@ The plugin can fail over from one model to the next when a prompt times out or e
 **Important notes:**
 
 - Fallback models must use the `provider/model` format
-- Chains are per agent (`Ra`, `oracle`, `Bastet`, `Horus`, `Thoth`, `Anubis`)
+- Chains are per agent (`Ra`, `Oracle`, `Bastet`, `Horus`, `Thoth`, `Anubis`)
 - If an agent has no configured chain, only its primary model is used
 - This is documented here because it is easy to miss in the config file
 
@@ -274,7 +274,7 @@ Control which agents can access which MCP servers using the `mcps` array in your
       "Thoth": {
         "mcps": ["websearch", "context7", "grep_app"]
       },
-      "oracle": {
+      "Oracle": {
         "mcps": ["*", "!websearch"]
       }
     }
@@ -438,7 +438,7 @@ The plugin supports **JSONC** format for configuration files, allowing you to:
   "presets": {
     "openai": {
       // Fast models for quick iteration
-      "oracle": { "model": "openai/gpt-5.4" },
+      "Oracle": { "model": "openai/gpt-5.4" },
       "Horus": { "model": "openai/gpt-5.4-mini" },
     },
   },

@@ -185,7 +185,7 @@ OpenCode has a built-in `/review` command that automatically performs comprehens
 /review <pr-url-or-number>
 ```
 
-**Why use `/review` instead of asking @oracle manually?**
+**Why use `/review` instead of asking @Oracle manually?**
 - Standardized review process with consistent focus areas (bugs, structure, performance)
 - Automatically handles git operations (diff, status, etc.)
 - Context-aware: reads full files and convention files (AGENTS.md, etc.)

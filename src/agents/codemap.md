@@ -247,12 +247,12 @@ Agents are configured with specific MCP tool lists:
 src/agents/
 ├── index.ts          # Main entry point, agent factory registry, config application
 ├── index.test.ts     # Unit tests for agent creation and configuration
-├── orchestrator.ts   # Orchestrator agent definition, delegation workflow, AgentDefinition interface
-├── explorer.ts       # Codebase navigation specialist
-├── librarian.ts      # Documentation and library research specialist
-├── oracle.ts         # Strategic technical advisor
-├── fixer.ts          # Fast implementation specialist
-└── designer.ts       # UI/UX design specialist
+├── ra.ts            # Ra (orchestrator) agent definition, delegation workflow, AgentDefinition interface
+├── horus.ts          # Horus - codebase navigation specialist
+├── thoth.ts          # Thoth - documentation and library research specialist
+├── oracle.ts         # Oracle - strategic technical advisor
+├── anubis.ts         # Anubis - fast implementation specialist
+└── bastet.ts         # Bastet - UI/UX design specialist
 ```
 
 ## Extension Points

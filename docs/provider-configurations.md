@@ -16,7 +16,7 @@ The installer generates this configuration automatically:
   "presets": {
     "openai": {
       "Ra": { "model": "openai/gpt-5.4", "variant": "high", "skills": ["*"], "mcps": ["websearch"] },
-      "oracle": { "model": "openai/gpt-5.4", "variant": "high", "skills": [], "mcps": [] },
+      "Oracle": { "model": "openai/gpt-5.4", "variant": "high", "skills": [], "mcps": [] },
       "Thoth": { "model": "openai/gpt-5.4-mini", "variant": "low", "skills": [], "mcps": ["websearch", "context7", "grep_app"] },
       "Horus": { "model": "openai/gpt-5.4-mini", "variant": "low", "skills": [], "mcps": [] },
       "Bastet": { "model": "openai/gpt-5.4-mini", "variant": "medium", "skills": ["agent-browser"], "mcps": [] },
@@ -36,7 +36,7 @@ To use Kimi, add a `kimi` preset and set it as active:
   "presets": {
     "kimi": {
       "Ra": { "model": "kimi-for-coding/k2p5", "variant": "high", "skills": ["*"], "mcps": ["websearch"] },
-      "oracle": { "model": "kimi-for-coding/k2p5", "variant": "high", "skills": [], "mcps": [] },
+      "Oracle": { "model": "kimi-for-coding/k2p5", "variant": "high", "skills": [], "mcps": [] },
       "Thoth": { "model": "kimi-for-coding/k2p5", "variant": "low", "skills": [], "mcps": ["websearch", "context7", "grep_app"] },
       "Horus": { "model": "kimi-for-coding/k2p5", "variant": "low", "skills": [], "mcps": [] },
       "Bastet": { "model": "kimi-for-coding/k2p5", "variant": "medium", "skills": ["agent-browser"], "mcps": [] },
@@ -62,7 +62,7 @@ To use GitHub Copilot with Grok Code Fast:
   "presets": {
     "copilot": {
       "Ra": { "model": "github-copilot/claude-opus-4.6", "variant": "high", "skills": ["*"], "mcps": ["websearch"] },
-      "oracle": { "model": "github-copilot/claude-opus-4.6", "variant": "high", "skills": [], "mcps": [] },
+      "Oracle": { "model": "github-copilot/claude-opus-4.6", "variant": "high", "skills": [], "mcps": [] },
       "Thoth": { "model": "github-copilot/grok-code-fast-1", "variant": "low", "skills": [], "mcps": ["websearch", "context7", "grep_app"] },
       "Horus": { "model": "github-copilot/grok-code-fast-1", "variant": "low", "skills": [], "mcps": [] },
       "Bastet": { "model": "github-copilot/gemini-3.1-pro-preview", "variant": "medium", "skills": ["agent-browser"], "mcps": [] },
@@ -88,7 +88,7 @@ To use ZAI Coding Plan with GLM 5:
   "presets": {
     "zai-plan": {
       "Ra": { "model": "zai-coding-plan/glm-5", "variant": "high", "skills": ["*"], "mcps": ["websearch"] },
-      "oracle": { "model": "zai-coding-plan/glm-5", "variant": "high", "skills": [], "mcps": [] },
+      "Oracle": { "model": "zai-coding-plan/glm-5", "variant": "high", "skills": [], "mcps": [] },
       "Thoth": { "model": "zai-coding-plan/glm-5", "variant": "low", "skills": [], "mcps": ["websearch", "context7", "grep_app"] },
       "Horus": { "model": "zai-coding-plan/glm-5", "variant": "low", "skills": [], "mcps": [] },
       "Bastet": { "model": "zai-coding-plan/glm-5", "variant": "medium", "skills": ["agent-browser"], "mcps": [] },
@@ -114,7 +114,7 @@ You can mix models from different providers across agents. Create a custom prese
   "presets": {
     "my-mix": {
       "Ra": { "model": "openai/gpt-5.4", "skills": ["*"], "mcps": ["websearch"] },
-      "oracle": { "model": "openai/gpt-5.4", "variant": "high", "skills": [], "mcps": [] },
+      "Oracle": { "model": "openai/gpt-5.4", "variant": "high", "skills": [], "mcps": [] },
       "Thoth": { "model": "kimi-for-coding/k2p5", "variant": "low", "skills": [], "mcps": ["websearch", "context7", "grep_app"] },
       "Horus": { "model": "github-copilot/grok-code-fast-1", "variant": "low", "skills": [], "mcps": [] },
       "Bastet": { "model": "kimi-for-coding/k2p5", "variant": "medium", "skills": ["agent-browser"], "mcps": [] },
