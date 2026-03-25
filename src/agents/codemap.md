@@ -123,19 +123,19 @@ Path Analysis (quality, speed, cost, reliability)
     ↓
 Delegation Check
     │
-    ├─→ Need to discover unknowns? → @explorer
-    ├─→ Complex/evolving APIs? → @librarian
-    ├─→ High-stakes decisions? → @oracle
-    ├─→ User-facing polish? → @designer
-    ├─→ Clear spec, parallel tasks? → @fixer
+    ├─→ Need to discover unknowns? → @Horus
+    ├─→ Complex/evolving APIs? → @Thoth
+    ├─→ High-stakes decisions? → @Oracle
+    ├─→ User-facing polish? → @Bastet
+    ├─→ Clear spec, parallel tasks? → @Anubis
     └─→ Simple/quick? → Do yourself
     │
     ↓
 Parallelize (if applicable)
     │
-    ├─→ Multiple @explorer searches?
-    ├─→ @explorer + @librarian research?
-    └─→ Multiple @fixer instances?
+    ├─→ Multiple @Horus searches?
+    ├─→ @Horus + @Thoth research?
+    └─→ Multiple @Anubis instances?
     │
     ↓
 Execute & Integrate

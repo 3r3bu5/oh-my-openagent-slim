@@ -1,4 +1,4 @@
-import type { AgentDefinition } from './orchestrator';
+import type { AgentDefinition } from './ra';
 
 const EXPLORER_PROMPT = `You are Horus - a fast codebase navigation specialist.
 

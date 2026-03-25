@@ -2,7 +2,7 @@
 
 ## Responsibility
 
-The `src/tools/` directory provides the core tool implementations for the oh-my-opencode-slim plugin. It exposes three main categories of tools:
+The `src/tools/` directory provides the core tool implementations for the oh-my-openagent-slim plugin. It exposes three main categories of tools:
 
 1. **AST-grep** - AST-aware structural code search and replacement across 25+ languages
 2. **LSP** - Language Server Protocol integration for code intelligence (definition, references, diagnostics, rename)
@@ -261,7 +261,7 @@ export {
 #### AST-grep (ast-grep/downloader.ts)
 - **Version**: 0.40.0 (synced with @ast-grep/cli package)
 - **Platforms**: darwin-arm64, darwin-x64, linux-arm64, linux-x64, win32-x64, win32-arm64, win32-ia32
-- **Install location**: `~/.cache/oh-my-opencode-slim/bin/sg` (Linux/macOS), `%LOCALAPPDATA%\oh-my-opencode-slim\bin\sg.exe` (Windows)
+- **Install location**: `~/.cache/oh-my-openagent-slim/bin/sg` (Linux/macOS), `%LOCALAPPDATA%\oh-my-openagent-slim\bin\sg.exe` (Windows)
 - **Fallback chain**: @ast-grep/cli → platform-specific package → Homebrew → download from GitHub
 
 ### Performance Considerations

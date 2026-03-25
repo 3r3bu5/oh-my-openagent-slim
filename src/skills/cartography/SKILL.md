@@ -123,7 +123,7 @@ Defines agent personalities and manages their configuration lifecycle.
 ## Design
 Each agent is a prompt + permission set. Config system uses:
 - Default prompts (orchestrator.ts, explorer.ts, etc.)
-- User overrides from ~/.config/opencode/oh-my-opencode-slim.json
+- User overrides from ~/.config/opencode/oh-my-openagent-slim.json
 - Permission wildcards for skill/MCP access control
 
 ## Flow
@@ -141,7 +141,7 @@ Each agent is a prompt + permission set. Config system uses:
 Example **Root Codemap (Atlas)**:
 
 ```markdown
-# Repository Atlas: oh-my-opencode-slim
+# Repository Atlas: oh-my-openagent-slim
 
 ## Project Responsibility
 A high-performance, low-latency agent orchestration plugin for OpenCode, focusing on specialized sub-agent delegation and background task management.
@@ -149,7 +149,7 @@ A high-performance, low-latency agent orchestration plugin for OpenCode, focusin
 ## System Entry Points
 - `src/index.ts`: Plugin initialization and OpenCode integration.
 - `package.json`: Dependency manifest and build scripts.
-- `oh-my-opencode-slim.json`: User configuration schema.
+- `oh-my-openagent-slim.json`: User configuration schema.
 
 ## Directory Map (Aggregated)
 | Directory | Responsibility Summary | Detailed Map |

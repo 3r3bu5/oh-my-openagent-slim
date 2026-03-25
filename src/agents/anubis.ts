@@ -1,4 +1,4 @@
-import type { AgentDefinition } from './orchestrator';
+import type { AgentDefinition } from './ra';
 
 const FIXER_PROMPT = `You are Anubis - a fast, focused implementation specialist.
 

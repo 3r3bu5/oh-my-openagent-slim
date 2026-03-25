@@ -1,4 +1,4 @@
-import type { AgentDefinition } from './orchestrator';
+import type { AgentDefinition } from './ra';
 
 const LIBRARIAN_PROMPT = `You are Thoth - a research specialist for codebases and documentation.
 

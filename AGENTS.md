@@ -4,7 +4,7 @@ This document provides guidelines for AI agents operating in this repository.
 
 ## Project Overview
 
-**oh-my-opencode-slim** - A lightweight agent orchestration plugin for OpenCode, a slimmed-down fork of oh-my-opencode. Built with TypeScript, Bun, and Biome.
+**oh-my-openagent-slim** - A lightweight agent orchestration plugin for OpenCode, a slimmed-down fork of oh-my-opencode. Built with TypeScript, Bun, and Biome.
 
 ## Commands
 
@@ -63,7 +63,7 @@ bun test -t "test-name-pattern"
 ## Project Structure
 
 ```
-oh-my-opencode-slim/
+oh-my-openagent-slim/
 ├── src/              # TypeScript source files
 ├── dist/             # Built JavaScript and declarations
 ├── node_modules/     # Dependencies
@@ -138,11 +138,11 @@ After making changes to session management:
 bun run build
 
 # 2. Run from local fork (in ~/.config/opencode/opencode.jsonc):
-# "plugin": ["file:///path/to/oh-my-opencode-slim"]
+# "plugin": ["file:///path/to/oh-my-openagent-slim"]
 
 # 3. Launch test tasks
-@explorer count files in src/
-@librarian search for Bun documentation
+@Horus count files in src/
+@Thoth search for Bun documentation
 
 # 4. Verify no orphans
 ps aux | grep "opencode attach" | grep -v grep

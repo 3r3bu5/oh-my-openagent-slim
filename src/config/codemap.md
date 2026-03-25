@@ -13,8 +13,8 @@ The `src/config/` module is responsible for:
 ### Key Patterns
 
 **Multi-Source Configuration Merging**
-- User config: `~/.config/opencode/oh-my-opencode-slim.jsonc` (preferred) or `.json`
-- Project config: `<directory>/.opencode/oh-my-opencode-slim.jsonc` (preferred) or `.json`
+- User config: `~/.config/opencode/oh-my-openagent-slim.jsonc` (preferred) or `.json`
+- Project config: `<directory>/.opencode/oh-my-openagent-slim.jsonc` (preferred) or `.json`
 - Environment override: `OH_MY_OPENCODE_SLIM_PRESET`
 - Project config takes precedence over user config
 - Nested objects (`agents`, `tmux`, `fallback`) are deep-merged; arrays and primitives are replaced
@@ -95,7 +95,7 @@ FailoverConfig
 loadPluginConfig(directory)
 │
 ├─→ Find user config path
-│   └─→ findConfigPath(~/.config/opencode/oh-my-opencode-slim)
+│   └─→ findConfigPath(~/.config/opencode/oh-my-openagent-slim)
 │       └─→ Prefers .jsonc over .json
 │
 ├─→ Load user config with loadConfigFromPath()
@@ -104,7 +104,7 @@ loadPluginConfig(directory)
 │       └─→ Returns null if invalid/missing
 │
 ├─→ Find project config path
-│   └─→ findConfigPath(<directory>/.opencode/oh-my-opencode-slim)
+│   └─→ findConfigPath(<directory>/.opencode/oh-my-openagent-slim)
 │
 ├─→ Load project config (same validation)
 │
@@ -144,10 +144,10 @@ loadAgentPrompt(agentName, preset?)
 │
 ├─→ Build prompt search dirs
 │   ├─→ If preset is safe:
-│   │   1) ~/.config/opencode/oh-my-opencode-slim/{preset}
-│   │   2) ~/.config/opencode/oh-my-opencode-slim
+│   │   1) ~/.config/opencode/oh-my-openagent-slim/{preset}
+│   │   2) ~/.config/opencode/oh-my-openagent-slim
 │   └─→ Otherwise:
-│       1) ~/.config/opencode/oh-my-opencode-slim
+│       1) ~/.config/opencode/oh-my-openagent-slim
 │
 ├─→ Read first existing {agentName}.md from search dirs
 │   └─→ If found → replacement prompt

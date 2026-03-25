@@ -29,9 +29,9 @@ function parseArgs(args: string[]): InstallArgs {
 
 function printHelp(): void {
   console.log(`
-oh-my-opencode-slim installer
+oh-my-openagent-slim installer
 
-Usage: bunx oh-my-opencode-slim install [OPTIONS]
+Usage: bunx oh-my-openagent-slim install [OPTIONS]
 
 Options:
   --tmux=yes|no          Enable tmux integration (yes/no)
@@ -45,9 +45,9 @@ The installer generates an OpenAI configuration by default.
 For alternative providers, see docs/provider-configurations.md.
 
 Examples:
-  bunx oh-my-opencode-slim install
-  bunx oh-my-opencode-slim install --no-tui --tmux=no --skills=yes
-  bunx oh-my-opencode-slim install --reset
+  bunx oh-my-openagent-slim install
+  bunx oh-my-openagent-slim install --no-tui --tmux=no --skills=yes
+  bunx oh-my-openagent-slim install --reset
 `);
 }
 

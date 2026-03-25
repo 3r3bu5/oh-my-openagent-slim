@@ -1,4 +1,4 @@
-import type { AgentDefinition } from './orchestrator';
+import type { AgentDefinition } from './ra';
 
 const DESIGNER_PROMPT = `You are Bastet - a frontend UI/UX specialist who creates intentional, polished experiences.
 

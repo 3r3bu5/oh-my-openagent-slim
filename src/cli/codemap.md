@@ -2,7 +2,7 @@
 
 ## Responsibility
 
-The `src/cli/` directory provides the command-line interface for installing and configuring **oh-my-opencode-slim**, an OpenCode plugin. It handles:
+The `src/cli/` directory provides the command-line interface for installing and configuring **oh-my-openagent-slim**, an OpenCode plugin. It handles:
 
 - **Installation orchestration**: Interactive (TUI) and non-interactive (`--no-tui`) installation flows
 - **Configuration management**: Reading, parsing (JSONC support), and writing OpenCode configuration files with atomic writes
@@ -172,7 +172,7 @@ Standardized result type for configuration operations.
 ### Installation Flow
 
 ```
-User runs: bunx oh-my-opencode-slim install [--no-tui] [--tmux=yes|no] [--skills=yes|no] [--dry-run] [--reset]
+User runs: bunx oh-my-openagent-slim install [--no-tui] [--tmux=yes|no] [--skills=yes|no] [--dry-run] [--reset]
           │
           ▼
 ┌─────────────────────────────────────────┐
@@ -199,7 +199,7 @@ User runs: bunx oh-my-opencode-slim install [--no-tui] [--tmux=yes|no] [--skills
 │   └─> config-io.ts:                     │
 │      addPluginToOpenCodeConfig()       │
 │      - Parse existing config (JSONC)   │
-│      - Add 'oh-my-opencode-slim'       │
+│      - Add 'oh-my-openagent-slim'       │
 │      - Remove old versions              │
 │      - Atomic write                     │
 │                                         │
@@ -249,7 +249,7 @@ detectCurrentConfig() [config-io.ts]
                   │
                   ▼
 ┌─────────────────────────────────────────┐
-│ Parse oh-my-opencode-slim.json/jsonc   │
+│ Parse oh-my-openagent-slim.json/jsonc   │
 │ - Extract preset name                   │
 │ - Check agent models for providers     │
 │ - Check tmux.enabled flag               │
@@ -335,7 +335,7 @@ skills.ts
 |------|----------|---------|
 | `opencode.json` | `~/.config/opencode/` | Main OpenCode config |
 | `opencode.jsonc` | `~/.config/opencode/` | Main config with comments |
-| `oh-my-opencode-slim.json` | `~/.config/opencode/` | Plugin-specific lite config |
+| `oh-my-openagent-slim.json` | `~/.config/opencode/` | Plugin-specific lite config |
 
 ### Supported Providers (MODEL_MAPPINGS)
 
@@ -348,7 +348,7 @@ skills.ts
 
 ### Consumers
 
-1. **End Users**: Via `bunx oh-my-opencode-slim install`
+1. **End Users**: Via `bunx oh-my-openagent-slim install`
 2. **OpenCode**: Reads generated configs to load plugin and agents
 3. **CI/CD**: Via `--no-tui` flag for automated installations
 
@@ -361,7 +361,7 @@ User Input (CLI args: --tmux, --skills, --dry-run, --reset)
 InstallConfig (preferences)
          │
          ├─> OpenCodeConfig (main config)
-         │    - Plugin registration ('oh-my-opencode-slim')
+         │    - Plugin registration ('oh-my-openagent-slim')
          │    - Agent disabling (explore, general)
          │
          └─> LiteConfig (plugin config)

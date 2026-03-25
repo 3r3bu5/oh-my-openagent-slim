@@ -9,15 +9,14 @@ import {
   SUBAGENT_NAMES,
 } from '../config';
 import { getAgentMcpList } from '../config/agent-mcps';
-
-import { createDesignerAgent } from './designer';
-import { createExplorerAgent } from './explorer';
-import { createFixerAgent } from './fixer';
-import { createLibrarianAgent } from './librarian';
+import { createFixerAgent } from './anubis';
+import { createDesignerAgent } from './bastet';
+import { createExplorerAgent } from './horus';
 import { createOracleAgent } from './oracle';
-import { type AgentDefinition, createOrchestratorAgent } from './orchestrator';
+import { type AgentDefinition, createOrchestratorAgent } from './ra';
+import { createLibrarianAgent } from './thoth';
 
-export type { AgentDefinition } from './orchestrator';
+export type { AgentDefinition } from './ra';
 
 type AgentFactory = (
   model: string,

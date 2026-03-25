@@ -4,7 +4,7 @@ import { stripJsonComments } from '../cli/config-io';
 import { getConfigDir } from '../cli/paths';
 import { type PluginConfig, PluginConfigSchema } from './schema';
 
-const PROMPTS_DIR_NAME = 'oh-my-opencode-slim';
+const PROMPTS_DIR_NAME = 'oh-my-openagent-slim';
 
 /**
  * Load and validate plugin configuration from a specific file path.
@@ -23,7 +23,7 @@ function loadConfigFromPath(configPath: string): PluginConfig | null {
     const result = PluginConfigSchema.safeParse(rawConfig);
 
     if (!result.success) {
-      console.warn(`[oh-my-opencode-slim] Invalid config at ${configPath}:`);
+      console.warn(`[oh-my-openagent-slim] Invalid config at ${configPath}:`);
       console.warn(result.error.format());
       return null;
     }
@@ -37,7 +37,7 @@ function loadConfigFromPath(configPath: string): PluginConfig | null {
       (error as NodeJS.ErrnoException).code !== 'ENOENT'
     ) {
       console.warn(
-        `[oh-my-opencode-slim] Error reading config from ${configPath}:`,
+        `[oh-my-openagent-slim] Error reading config from ${configPath}:`,
         error.message,
       );
     }
@@ -49,7 +49,7 @@ function loadConfigFromPath(configPath: string): PluginConfig | null {
  * Find existing config file path, preferring .jsonc over .json.
  * Checks for .jsonc first, then falls back to .json.
  *
- * @param basePath - Base path without extension (e.g., /path/to/oh-my-opencode-slim)
+ * @param basePath - Base path without extension (e.g., /path/to/oh-my-openagent-slim)
  * @returns Path to existing config file, or null if neither exists
  */
 function findConfigPath(basePath: string): string | null {
@@ -109,9 +109,9 @@ function deepMerge<T extends Record<string, unknown>>(
  * Load plugin configuration from user and project config files, merging them appropriately.
  *
  * Configuration is loaded from two locations:
- * 1. User config: $OPENCODE_CONFIG_DIR/oh-my-opencode-slim.jsonc or .json,
- *    or ~/.config/opencode/oh-my-opencode-slim.jsonc or .json (or $XDG_CONFIG_HOME)
- * 2. Project config: <directory>/.opencode/oh-my-opencode-slim.jsonc or .json
+ * 1. User config: $OPENCODE_CONFIG_DIR/oh-my-openagent-slim.jsonc or .json,
+ *    or ~/.config/opencode/oh-my-openagent-slim.jsonc or .json (or $XDG_CONFIG_HOME)
+ * 2. Project config: <directory>/.opencode/oh-my-openagent-slim.jsonc or .json
  *
  * JSONC format is preferred over JSON (allows comments and trailing commas).
  * Project config takes precedence over user config. Nested objects (agents, tmux) are
@@ -121,12 +121,12 @@ function deepMerge<T extends Record<string, unknown>>(
  * @returns Merged plugin configuration (empty object if no configs found)
  */
 export function loadPluginConfig(directory: string): PluginConfig {
-  const userConfigBasePath = path.join(getConfigDir(), 'oh-my-opencode-slim');
+  const userConfigBasePath = path.join(getConfigDir(), 'oh-my-openagent-slim');
 
   const projectConfigBasePath = path.join(
     directory,
     '.opencode',
-    'oh-my-opencode-slim',
+    'oh-my-openagent-slim',
   );
 
   // Find existing config files (preferring .jsonc over .json)
@@ -170,7 +170,7 @@ export function loadPluginConfig(directory: string): PluginConfig {
         ? Object.keys(config.presets).join(', ')
         : 'none';
       console.warn(
-        `[oh-my-opencode-slim] Preset "${config.preset}" not found (from ${presetSource}). Available presets: ${availablePresets}`,
+        `[oh-my-openagent-slim] Preset "${config.preset}" not found (from ${presetSource}). Available presets: ${availablePresets}`,
       );
     }
   }
@@ -217,7 +217,7 @@ export function loadAgentPrompt(
         return fs.readFileSync(promptPath, 'utf-8');
       } catch (error) {
         console.warn(
-          `[oh-my-opencode-slim] ${errorPrefix} ${promptPath}:`,
+          `[oh-my-openagent-slim] ${errorPrefix} ${promptPath}:`,
           error instanceof Error ? error.message : String(error),
         );
       }
