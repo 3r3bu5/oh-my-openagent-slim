@@ -1,6 +1,12 @@
 // Agent names
 export const AGENT_ALIASES: Record<string, string> = {
   explore: 'Horus',
+  explorer: 'Horus',
+  librarian: 'Thoth',
+  oracle: 'Oracle',
+  designer: 'Bastet',
+  fixer: 'Anubis',
+  orchestrator: 'Ra',
   'frontend-ui-ux-engineer': 'Bastet',
 };
 
