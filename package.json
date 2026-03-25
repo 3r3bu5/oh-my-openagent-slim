@@ -1,6 +1,6 @@
 {
   "name": "@a4hgehad/oh-my-openagent-slim",
-  "version": "0.8.9",
+  "version": "0.8.10",
   "description": "Lightweight agent orchestration plugin for OpenCode - Egyptian mythology themed fork",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
