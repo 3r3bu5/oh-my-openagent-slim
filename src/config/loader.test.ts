@@ -41,13 +41,13 @@ describe('loadPluginConfig', () => {
       path.join(projectConfigDir, 'oh-my-opencode-slim.json'),
       JSON.stringify({
         agents: {
-          oracle: { model: 'test/model' },
+          Oracle: { model: 'test/model' },
         },
       }),
     );
 
     const config = loadPluginConfig(projectDir);
-    expect(config.agents?.oracle?.model).toBe('test/model');
+    expect(config.agents?.Oracle?.model).toBe('test/model');
   });
 
   test('loads scoringEngineVersion flag when configured', () => {
@@ -88,37 +88,37 @@ describe('loadPluginConfig', () => {
       path.join(projectConfigDir, 'oh-my-opencode-slim.json'),
       JSON.stringify({
         manualPlan: {
-          orchestrator: {
+          Ra: {
             primary: 'openai/gpt-5.4',
             fallback1: 'anthropic/claude-opus-4-6',
             fallback2: 'chutes/kimi-k2.5',
             fallback3: 'opencode/gpt-5-nano',
           },
-          oracle: {
+          Oracle: {
             primary: 'openai/gpt-5.4',
             fallback1: 'anthropic/claude-opus-4-6',
             fallback2: 'chutes/Qwen/Qwen3-Coder-480B-A35B-Instruct-FP8-TEE',
             fallback3: 'opencode/gpt-5-nano',
           },
-          designer: {
+          Bastet: {
             primary: 'openai/gpt-5.4',
             fallback1: 'anthropic/claude-opus-4-6',
             fallback2: 'chutes/kimi-k2.5',
             fallback3: 'opencode/gpt-5-nano',
           },
-          explorer: {
+          Horus: {
             primary: 'openai/gpt-5.4',
             fallback1: 'anthropic/claude-opus-4-6',
             fallback2: 'chutes/kimi-k2.5',
             fallback3: 'opencode/gpt-5-nano',
           },
-          librarian: {
+          Thoth: {
             primary: 'openai/gpt-5.4',
             fallback1: 'anthropic/claude-opus-4-6',
             fallback2: 'chutes/kimi-k2.5',
             fallback3: 'opencode/gpt-5-nano',
           },
-          fixer: {
+          Anubis: {
             primary: 'openai/gpt-5.4',
             fallback1: 'anthropic/claude-opus-4-6',
             fallback2: 'chutes/kimi-k2.5',
@@ -129,7 +129,7 @@ describe('loadPluginConfig', () => {
     );
 
     const config = loadPluginConfig(projectDir);
-    expect(config.manualPlan?.oracle?.fallback2).toBe(
+    expect(config.manualPlan?.Oracle?.fallback2).toBe(
       'chutes/Qwen/Qwen3-Coder-480B-A35B-Instruct-FP8-TEE',
     );
   });
@@ -142,7 +142,7 @@ describe('loadPluginConfig', () => {
     // Test 1: Invalid temperature (out of range)
     fs.writeFileSync(
       path.join(projectConfigDir, 'oh-my-opencode-slim.json'),
-      JSON.stringify({ agents: { oracle: { temperature: 5 } } }),
+      JSON.stringify({ agents: { Oracle: { temperature: 5 } } }),
     );
     expect(loadPluginConfig(projectDir)).toEqual({});
 
@@ -164,7 +164,7 @@ describe('loadPluginConfig', () => {
     fs.writeFileSync(
       path.join(customDir, 'oh-my-opencode-slim.json'),
       JSON.stringify({
-        agents: { oracle: { model: 'custom/model-from-opencode-config-dir' } },
+        agents: { Oracle: { model: 'custom/model-from-opencode-config-dir' } },
       }),
     );
 
@@ -172,7 +172,7 @@ describe('loadPluginConfig', () => {
     fs.mkdirSync(projectDir, { recursive: true });
 
     const config = loadPluginConfig(projectDir);
-    expect(config.agents?.oracle?.model).toBe(
+    expect(config.agents?.Oracle?.model).toBe(
       'custom/model-from-opencode-config-dir',
     );
 
@@ -208,8 +208,8 @@ describe('deepMerge behavior', () => {
       path.join(userOpencodeDir, 'oh-my-opencode-slim.json'),
       JSON.stringify({
         agents: {
-          oracle: { model: 'user/oracle-model', temperature: 0.5 },
-          explorer: { model: 'user/explorer-model' },
+          Oracle: { model: 'user/Oracle-model', temperature: 0.5 },
+          Horus: { model: 'user/Horus-model' },
         },
       }),
     );
@@ -222,23 +222,23 @@ describe('deepMerge behavior', () => {
       path.join(projectConfigDir, 'oh-my-opencode-slim.json'),
       JSON.stringify({
         agents: {
-          oracle: { temperature: 0.8 }, // Override temperature only
-          designer: { model: 'project/designer-model' }, // Add new agent
+          Oracle: { temperature: 0.8 }, // Override temperature only
+          Bastet: { model: 'project/Bastet-model' }, // Add new agent
         },
       }),
     );
 
     const config = loadPluginConfig(projectDir);
 
-    // oracle: model from user, temperature from project
-    expect(config.agents?.oracle?.model).toBe('user/oracle-model');
-    expect(config.agents?.oracle?.temperature).toBe(0.8);
+    // Oracle: model from user, temperature from project
+    expect(config.agents?.Oracle?.model).toBe('user/Oracle-model');
+    expect(config.agents?.Oracle?.temperature).toBe(0.8);
 
-    // explorer: from user only
-    expect(config.agents?.explorer?.model).toBe('user/explorer-model');
+    // Horus: from user only
+    expect(config.agents?.Horus?.model).toBe('user/Horus-model');
 
-    // designer: from project only
-    expect(config.agents?.designer?.model).toBe('project/designer-model');
+    // Bastet: from project only
+    expect(config.agents?.Bastet?.model).toBe('project/Bastet-model');
   });
 
   test('merges nested tmux configs', () => {
@@ -294,7 +294,7 @@ describe('deepMerge behavior', () => {
     fs.writeFileSync(
       path.join(projectConfigDir, 'oh-my-opencode-slim.json'),
       JSON.stringify({
-        agents: { oracle: { model: 'test' } }, // No tmux override
+        agents: { Oracle: { model: 'test' } }, // No tmux override
       }),
     );
 
@@ -339,13 +339,13 @@ describe('deepMerge behavior', () => {
       path.join(projectConfigDir, 'oh-my-opencode-slim.json'),
       JSON.stringify({
         agents: {
-          oracle: { model: 'project/model' },
+          Oracle: { model: 'project/model' },
         },
       }),
     );
 
     const config = loadPluginConfig(projectDir);
-    expect(config.agents?.oracle?.model).toBe('project/model');
+    expect(config.agents?.Oracle?.model).toBe('project/model');
   });
 
   test('handles missing project config gracefully', () => {
@@ -355,7 +355,7 @@ describe('deepMerge behavior', () => {
       path.join(userOpencodeDir, 'oh-my-opencode-slim.json'),
       JSON.stringify({
         agents: {
-          oracle: { model: 'user/model' },
+          Oracle: { model: 'user/model' },
         },
       }),
     );
@@ -365,7 +365,7 @@ describe('deepMerge behavior', () => {
     fs.mkdirSync(projectDir, { recursive: true });
 
     const config = loadPluginConfig(projectDir);
-    expect(config.agents?.oracle?.model).toBe('user/model');
+    expect(config.agents?.Oracle?.model).toBe('user/model');
   });
 
   test('merges fallback timeout and chains from user and project', () => {
@@ -377,7 +377,7 @@ describe('deepMerge behavior', () => {
         fallback: {
           timeoutMs: 15000,
           chains: {
-            oracle: ['openai/gpt-5.4', 'opencode/glm-4.7-free'],
+            Oracle: ['openai/gpt-5.4', 'opencode/glm-4.7-free'],
           },
         },
       }),
@@ -391,7 +391,7 @@ describe('deepMerge behavior', () => {
       JSON.stringify({
         fallback: {
           chains: {
-            explorer: ['google/antigravity-gemini-3-flash'],
+            Horus: ['google/antigravity-gemini-3-flash'],
           },
         },
       }),
@@ -399,11 +399,11 @@ describe('deepMerge behavior', () => {
 
     const config = loadPluginConfig(projectDir);
     expect(config.fallback?.timeoutMs).toBe(15000);
-    expect(config.fallback?.chains.oracle).toEqual([
+    expect(config.fallback?.chains.Oracle).toEqual([
       'openai/gpt-5.4',
       'opencode/glm-4.7-free',
     ]);
-    expect(config.fallback?.chains.explorer).toEqual([
+    expect(config.fallback?.chains.Horus).toEqual([
       'google/antigravity-gemini-3-flash',
     ]);
   });
@@ -451,12 +451,12 @@ describe('preset resolution', () => {
     fs.writeFileSync(
       path.join(projectConfigDir, 'oh-my-opencode-slim.json'),
       JSON.stringify({
-        agents: { oracle: { model: 'direct-model' } },
+        agents: { Oracle: { model: 'direct-model' } },
       }),
     );
 
     const config = loadPluginConfig(projectDir);
-    expect(config.agents?.oracle?.model).toBe('direct-model');
+    expect(config.agents?.Oracle?.model).toBe('direct-model');
     expect(config.preset).toBeUndefined();
   });
 
@@ -469,13 +469,13 @@ describe('preset resolution', () => {
       JSON.stringify({
         preset: 'fast',
         presets: {
-          fast: { oracle: { model: 'fast-model' } },
+          fast: { Oracle: { model: 'fast-model' } },
         },
       }),
     );
 
     const config = loadPluginConfig(projectDir);
-    expect(config.agents?.oracle?.model).toBe('fast-model');
+    expect(config.agents?.Oracle?.model).toBe('fast-model');
   });
 
   test('root agents override preset agents', () => {
@@ -488,20 +488,20 @@ describe('preset resolution', () => {
         preset: 'fast',
         presets: {
           fast: {
-            oracle: { model: 'fast-model', temperature: 0.1 },
-            explorer: { model: 'explorer-model' },
+            Oracle: { model: 'fast-model', temperature: 0.1 },
+            Horus: { model: 'Horus-model' },
           },
         },
         agents: {
-          oracle: { temperature: 0.9 }, // Should override preset temperature
+          Oracle: { temperature: 0.9 }, // Should override preset temperature
         },
       }),
     );
 
     const config = loadPluginConfig(projectDir);
-    expect(config.agents?.oracle?.model).toBe('fast-model');
-    expect(config.agents?.oracle?.temperature).toBe(0.9);
-    expect(config.agents?.explorer?.model).toBe('explorer-model');
+    expect(config.agents?.Oracle?.model).toBe('fast-model');
+    expect(config.agents?.Oracle?.temperature).toBe(0.9);
+    expect(config.agents?.Horus?.model).toBe('Horus-model');
   });
 
   test('missing preset: preset set but not in presets -> returns empty/root agents', () => {
@@ -513,14 +513,14 @@ describe('preset resolution', () => {
       JSON.stringify({
         preset: 'nonexistent',
         presets: {
-          other: { oracle: { model: 'other' } },
+          other: { Oracle: { model: 'other' } },
         },
-        agents: { oracle: { model: 'root' } },
+        agents: { Oracle: { model: 'root' } },
       }),
     );
 
     const config = loadPluginConfig(projectDir);
-    expect(config.agents?.oracle?.model).toBe('root');
+    expect(config.agents?.Oracle?.model).toBe('root');
   });
 
   test('preset only: no root agents, just preset works', () => {
@@ -532,13 +532,13 @@ describe('preset resolution', () => {
       JSON.stringify({
         preset: 'dev',
         presets: {
-          dev: { oracle: { model: 'dev-model' } },
+          dev: { Oracle: { model: 'dev-model' } },
         },
       }),
     );
 
     const config = loadPluginConfig(projectDir);
-    expect(config.agents?.oracle?.model).toBe('dev-model');
+    expect(config.agents?.Oracle?.model).toBe('dev-model');
   });
 
   test('invalid preset shape: bad agent config in preset fails schema validation', () => {
@@ -552,7 +552,7 @@ describe('preset resolution', () => {
       JSON.stringify({
         preset: 'invalid',
         presets: {
-          invalid: { oracle: { temperature: 5 } },
+          invalid: { Oracle: { temperature: 5 } },
         },
       }),
     );
@@ -570,15 +570,15 @@ describe('preset resolution', () => {
       JSON.stringify({
         preset: 'nonexistent',
         presets: {
-          other: { oracle: { model: 'other' } },
+          other: { Oracle: { model: 'other' } },
         },
-        agents: { oracle: { model: 'root' } },
+        agents: { Oracle: { model: 'root' } },
       }),
     );
 
     const consoleWarnSpy = spyOn(console, 'warn');
     const config = loadPluginConfig(projectDir);
-    expect(config.agents?.oracle?.model).toBe('root');
+    expect(config.agents?.Oracle?.model).toBe('root');
     expect(consoleWarnSpy).toHaveBeenCalled();
     const warningMessage = consoleWarnSpy.mock.calls[0][0] as string;
     expect(warningMessage).toContain('Preset "nonexistent" not found');
@@ -594,7 +594,7 @@ describe('preset resolution', () => {
       JSON.stringify({
         preset: 'nonexistent',
         presets: {
-          other: { oracle: { model: 'other' } },
+          other: { Oracle: { model: 'other' } },
         },
       }),
     );
@@ -633,8 +633,8 @@ describe('environment variable preset override', () => {
       JSON.stringify({
         preset: 'config-preset',
         presets: {
-          'config-preset': { oracle: { model: 'config-model' } },
-          'env-preset': { oracle: { model: 'env-model' } },
+          'config-preset': { Oracle: { model: 'config-model' } },
+          'env-preset': { Oracle: { model: 'env-model' } },
         },
       }),
     );
@@ -642,7 +642,7 @@ describe('environment variable preset override', () => {
     process.env.OH_MY_OPENCODE_SLIM_PRESET = 'env-preset';
     const config = loadPluginConfig(projectDir);
     expect(config.preset).toBe('env-preset');
-    expect(config.agents?.oracle?.model).toBe('env-model');
+    expect(config.agents?.Oracle?.model).toBe('env-model');
   });
 
   test('Env var works when config has no preset', () => {
@@ -653,7 +653,7 @@ describe('environment variable preset override', () => {
       path.join(projectConfigDir, 'oh-my-opencode-slim.json'),
       JSON.stringify({
         presets: {
-          'env-preset': { oracle: { model: 'env-model' } },
+          'env-preset': { Oracle: { model: 'env-model' } },
         },
       }),
     );
@@ -661,7 +661,7 @@ describe('environment variable preset override', () => {
     process.env.OH_MY_OPENCODE_SLIM_PRESET = 'env-preset';
     const config = loadPluginConfig(projectDir);
     expect(config.preset).toBe('env-preset');
-    expect(config.agents?.oracle?.model).toBe('env-model');
+    expect(config.agents?.Oracle?.model).toBe('env-model');
   });
 
   test('Env var is ignored if empty string', () => {
@@ -673,7 +673,7 @@ describe('environment variable preset override', () => {
       JSON.stringify({
         preset: 'config-preset',
         presets: {
-          'config-preset': { oracle: { model: 'config-model' } },
+          'config-preset': { Oracle: { model: 'config-model' } },
         },
       }),
     );
@@ -681,7 +681,7 @@ describe('environment variable preset override', () => {
     process.env.OH_MY_OPENCODE_SLIM_PRESET = '';
     const config = loadPluginConfig(projectDir);
     expect(config.preset).toBe('config-preset');
-    expect(config.agents?.oracle?.model).toBe('config-model');
+    expect(config.agents?.Oracle?.model).toBe('config-model');
   });
 
   test('Env var is ignored if undefined', () => {
@@ -693,7 +693,7 @@ describe('environment variable preset override', () => {
       JSON.stringify({
         preset: 'config-preset',
         presets: {
-          'config-preset': { oracle: { model: 'config-model' } },
+          'config-preset': { Oracle: { model: 'config-model' } },
         },
       }),
     );
@@ -701,7 +701,7 @@ describe('environment variable preset override', () => {
     delete process.env.OH_MY_OPENCODE_SLIM_PRESET;
     const config = loadPluginConfig(projectDir);
     expect(config.preset).toBe('config-preset');
-    expect(config.agents?.oracle?.model).toBe('config-model');
+    expect(config.agents?.Oracle?.model).toBe('config-model');
   });
 
   test('Env var with nonexistent preset warns and falls back', () => {
@@ -713,9 +713,9 @@ describe('environment variable preset override', () => {
       JSON.stringify({
         preset: 'config-preset',
         presets: {
-          'config-preset': { oracle: { model: 'config-model' } },
+          'config-preset': { Oracle: { model: 'config-model' } },
         },
-        agents: { oracle: { model: 'fallback' } },
+        agents: { Oracle: { model: 'fallback' } },
       }),
     );
 
@@ -723,7 +723,7 @@ describe('environment variable preset override', () => {
     const consoleWarnSpy = spyOn(console, 'warn');
     const config = loadPluginConfig(projectDir);
     expect(config.preset).toBe('typo-preset');
-    expect(config.agents?.oracle?.model).toBe('fallback');
+    expect(config.agents?.Oracle?.model).toBe('fallback');
     expect(consoleWarnSpy).toHaveBeenCalled();
     const calls = consoleWarnSpy.mock.calls as string[][];
     const warningMessage =
@@ -759,13 +759,13 @@ describe('JSONC config support', () => {
       `{
         // This is a comment
         "agents": {
-          "oracle": { "model": "test/model" } // inline comment
+          "Oracle": { "model": "test/model" } // inline comment
         }
       }`,
     );
 
     const config = loadPluginConfig(projectDir);
-    expect(config.agents?.oracle?.model).toBe('test/model');
+    expect(config.agents?.Oracle?.model).toBe('test/model');
   });
 
   test('loads .jsonc file with multi-line comments', () => {
@@ -778,13 +778,13 @@ describe('JSONC config support', () => {
         /* Multi-line
            comment block */
         "agents": {
-          "explorer": { "model": "explorer-model" }
+          "Horus": { "model": "Horus-model" }
         }
       }`,
     );
 
     const config = loadPluginConfig(projectDir);
-    expect(config.agents?.explorer?.model).toBe('explorer-model');
+    expect(config.agents?.Horus?.model).toBe('Horus-model');
   });
 
   test('loads .jsonc file with trailing commas', () => {
@@ -795,13 +795,13 @@ describe('JSONC config support', () => {
       path.join(projectConfigDir, 'oh-my-opencode-slim.jsonc'),
       `{
         "agents": {
-          "oracle": { "model": "test-model", },
+          "Oracle": { "model": "test-model", },
         },
       }`,
     );
 
     const config = loadPluginConfig(projectDir);
-    expect(config.agents?.oracle?.model).toBe('test-model');
+    expect(config.agents?.Oracle?.model).toBe('test-model');
   });
 
   test('prefers .jsonc over .json when both exist', () => {
@@ -812,18 +812,18 @@ describe('JSONC config support', () => {
     // Create both files
     fs.writeFileSync(
       path.join(projectConfigDir, 'oh-my-opencode-slim.json'),
-      JSON.stringify({ agents: { oracle: { model: 'json-model' } } }),
+      JSON.stringify({ agents: { Oracle: { model: 'json-model' } } }),
     );
     fs.writeFileSync(
       path.join(projectConfigDir, 'oh-my-opencode-slim.jsonc'),
       `{
         // JSONC version
-        "agents": { "oracle": { "model": "jsonc-model" } }
+        "agents": { "Oracle": { "model": "jsonc-model" } }
       }`,
     );
 
     const config = loadPluginConfig(projectDir);
-    expect(config.agents?.oracle?.model).toBe('jsonc-model');
+    expect(config.agents?.Oracle?.model).toBe('jsonc-model');
   });
 
   test('falls back to .json when .jsonc does not exist', () => {
@@ -834,11 +834,11 @@ describe('JSONC config support', () => {
     // Only create .json file
     fs.writeFileSync(
       path.join(projectConfigDir, 'oh-my-opencode-slim.json'),
-      JSON.stringify({ agents: { oracle: { model: 'json-model' } } }),
+      JSON.stringify({ agents: { Oracle: { model: 'json-model' } } }),
     );
 
     const config = loadPluginConfig(projectDir);
-    expect(config.agents?.oracle?.model).toBe('json-model');
+    expect(config.agents?.Oracle?.model).toBe('json-model');
   });
 
   test('loads user config from .jsonc', () => {
@@ -848,7 +848,7 @@ describe('JSONC config support', () => {
       path.join(userOpencodeDir, 'oh-my-opencode-slim.jsonc'),
       `{
         // User config with comments
-        "agents": { "librarian": { "model": "user-librarian" } }
+        "agents": { "Thoth": { "model": "user-Thoth" } }
       }`,
     );
 
@@ -856,7 +856,7 @@ describe('JSONC config support', () => {
     fs.mkdirSync(projectDir, { recursive: true });
 
     const config = loadPluginConfig(projectDir);
-    expect(config.agents?.librarian?.model).toBe('user-librarian');
+    expect(config.agents?.Thoth?.model).toBe('user-Thoth');
   });
 
   test('merges user .jsonc with project .jsonc', () => {
@@ -867,7 +867,7 @@ describe('JSONC config support', () => {
       `{
         // User config
         "agents": {
-          "oracle": { "model": "user-oracle", "temperature": 0.5 }
+          "Oracle": { "model": "user-Oracle", "temperature": 0.5 }
         }
       }`,
     );
@@ -879,13 +879,13 @@ describe('JSONC config support', () => {
       path.join(projectConfigDir, 'oh-my-opencode-slim.jsonc'),
       `{
         // Project config
-        "agents": { "oracle": { "temperature": 0.8 } }
+        "agents": { "Oracle": { "temperature": 0.8 } }
       }`,
     );
 
     const config = loadPluginConfig(projectDir);
-    expect(config.agents?.oracle?.model).toBe('user-oracle');
-    expect(config.agents?.oracle?.temperature).toBe(0.8);
+    expect(config.agents?.Oracle?.model).toBe('user-Oracle');
+    expect(config.agents?.Oracle?.temperature).toBe(0.8);
   });
 
   test('handles complex JSONC with mixed comments and trailing commas', () => {
@@ -901,8 +901,8 @@ describe('JSONC config support', () => {
         "presets": {
           "dev": {
             // Development agents
-            "oracle": { "model": "dev-oracle", },
-            "explorer": { "model": "dev-explorer", },
+            "Oracle": { "model": "dev-Oracle", },
+            "Horus": { "model": "dev-Horus", },
           },
         },
         "tmux": {
@@ -914,8 +914,8 @@ describe('JSONC config support', () => {
 
     const config = loadPluginConfig(projectDir);
     expect(config.preset).toBe('dev');
-    expect(config.agents?.oracle?.model).toBe('dev-oracle');
-    expect(config.agents?.explorer?.model).toBe('dev-explorer');
+    expect(config.agents?.Oracle?.model).toBe('dev-Oracle');
+    expect(config.agents?.Horus?.model).toBe('dev-Horus');
     expect(config.tmux?.enabled).toBe(true);
     expect(config.tmux?.layout).toBe('main-vertical');
   });
@@ -938,16 +938,16 @@ describe('loadAgentPrompt', () => {
   });
 
   test('returns empty object when no prompt files exist', () => {
-    const result = loadAgentPrompt('oracle');
+    const result = loadAgentPrompt('Oracle');
     expect(result).toEqual({});
   });
 
   test('loads replacement prompt from {agent}.md', () => {
     const promptsDir = path.join(tempDir, 'opencode', 'oh-my-opencode-slim');
     fs.mkdirSync(promptsDir, { recursive: true });
-    fs.writeFileSync(path.join(promptsDir, 'oracle.md'), 'replacement prompt');
+    fs.writeFileSync(path.join(promptsDir, 'Oracle.md'), 'replacement prompt');
 
-    const result = loadAgentPrompt('oracle');
+    const result = loadAgentPrompt('Oracle');
     expect(result.prompt).toBe('replacement prompt');
     expect(result.appendPrompt).toBeUndefined();
   });
@@ -956,11 +956,11 @@ describe('loadAgentPrompt', () => {
     const promptsDir = path.join(tempDir, 'opencode', 'oh-my-opencode-slim');
     fs.mkdirSync(promptsDir, { recursive: true });
     fs.writeFileSync(
-      path.join(promptsDir, 'oracle_append.md'),
+      path.join(promptsDir, 'Oracle_append.md'),
       'append prompt',
     );
 
-    const result = loadAgentPrompt('oracle');
+    const result = loadAgentPrompt('Oracle');
     expect(result.prompt).toBeUndefined();
     expect(result.appendPrompt).toBe('append prompt');
   });
@@ -968,13 +968,13 @@ describe('loadAgentPrompt', () => {
   test('loads both replacement and append prompts', () => {
     const promptsDir = path.join(tempDir, 'opencode', 'oh-my-opencode-slim');
     fs.mkdirSync(promptsDir, { recursive: true });
-    fs.writeFileSync(path.join(promptsDir, 'oracle.md'), 'replacement prompt');
+    fs.writeFileSync(path.join(promptsDir, 'Oracle.md'), 'replacement prompt');
     fs.writeFileSync(
-      path.join(promptsDir, 'oracle_append.md'),
+      path.join(promptsDir, 'Oracle_append.md'),
       'append prompt',
     );
 
-    const result = loadAgentPrompt('oracle');
+    const result = loadAgentPrompt('Oracle');
     expect(result.prompt).toBe('replacement prompt');
     expect(result.appendPrompt).toBe('append prompt');
   });
@@ -1016,18 +1016,18 @@ describe('loadAgentPrompt', () => {
     const presetDir = path.join(promptsDir, 'test');
     fs.mkdirSync(presetDir, { recursive: true });
 
-    fs.writeFileSync(path.join(promptsDir, 'oracle.md'), 'root replacement');
-    fs.writeFileSync(path.join(presetDir, 'oracle.md'), 'preset replacement');
+    fs.writeFileSync(path.join(promptsDir, 'Oracle.md'), 'root replacement');
+    fs.writeFileSync(path.join(presetDir, 'Oracle.md'), 'preset replacement');
     fs.writeFileSync(
-      path.join(promptsDir, 'oracle_append.md'),
+      path.join(promptsDir, 'Oracle_append.md'),
       'root append prompt',
     );
     fs.writeFileSync(
-      path.join(presetDir, 'oracle_append.md'),
+      path.join(presetDir, 'Oracle_append.md'),
       'preset append prompt',
     );
 
-    const result = loadAgentPrompt('oracle', 'test');
+    const result = loadAgentPrompt('Oracle', 'test');
     expect(result.prompt).toBe('preset replacement');
     expect(result.appendPrompt).toBe('preset append prompt');
   });
@@ -1037,13 +1037,13 @@ describe('loadAgentPrompt', () => {
     const presetDir = path.join(promptsDir, 'test');
     fs.mkdirSync(presetDir, { recursive: true });
 
-    fs.writeFileSync(path.join(promptsDir, 'oracle.md'), 'root replacement');
+    fs.writeFileSync(path.join(promptsDir, 'Oracle.md'), 'root replacement');
     fs.writeFileSync(
-      path.join(promptsDir, 'oracle_append.md'),
+      path.join(promptsDir, 'Oracle_append.md'),
       'root append prompt',
     );
 
-    const result = loadAgentPrompt('oracle', 'test');
+    const result = loadAgentPrompt('Oracle', 'test');
     expect(result.prompt).toBe('root replacement');
     expect(result.appendPrompt).toBe('root append prompt');
   });
@@ -1053,13 +1053,13 @@ describe('loadAgentPrompt', () => {
     const presetDir = path.join(promptsDir, 'test');
     fs.mkdirSync(presetDir, { recursive: true });
 
-    fs.writeFileSync(path.join(presetDir, 'oracle.md'), 'preset replacement');
+    fs.writeFileSync(path.join(presetDir, 'Oracle.md'), 'preset replacement');
     fs.writeFileSync(
-      path.join(promptsDir, 'oracle_append.md'),
+      path.join(promptsDir, 'Oracle_append.md'),
       'root append prompt',
     );
 
-    const result = loadAgentPrompt('oracle', 'test');
+    const result = loadAgentPrompt('Oracle', 'test');
     expect(result.prompt).toBe('preset replacement');
     expect(result.appendPrompt).toBe('root append prompt');
   });
@@ -1067,9 +1067,9 @@ describe('loadAgentPrompt', () => {
   test('ignores unsafe preset names for prompt lookup', () => {
     const promptsDir = path.join(tempDir, 'opencode', 'oh-my-opencode-slim');
     fs.mkdirSync(promptsDir, { recursive: true });
-    fs.writeFileSync(path.join(promptsDir, 'oracle.md'), 'root replacement');
+    fs.writeFileSync(path.join(promptsDir, 'Oracle.md'), 'root replacement');
 
-    const result = loadAgentPrompt('oracle', '../test');
+    const result = loadAgentPrompt('Oracle', '../test');
     expect(result.prompt).toBe('root replacement');
     expect(result.appendPrompt).toBeUndefined();
   });
@@ -1078,9 +1078,9 @@ describe('loadAgentPrompt', () => {
     const promptsDir = path.join(tempDir, 'opencode', 'oh-my-opencode-slim');
     const presetDir = path.join(promptsDir, 'test');
     fs.mkdirSync(presetDir, { recursive: true });
-    const presetPromptPath = path.join(presetDir, 'oracle.md');
+    const presetPromptPath = path.join(presetDir, 'Oracle.md');
     fs.writeFileSync(presetPromptPath, 'preset replacement');
-    fs.writeFileSync(path.join(promptsDir, 'oracle.md'), 'root replacement');
+    fs.writeFileSync(path.join(promptsDir, 'Oracle.md'), 'root replacement');
 
     const consoleWarnSpy = spyOn(console, 'warn');
     const originalReadFileSync = fs.readFileSync;
@@ -1094,7 +1094,7 @@ describe('loadAgentPrompt', () => {
     );
 
     try {
-      const result = loadAgentPrompt('oracle', 'test');
+      const result = loadAgentPrompt('Oracle', 'test');
       expect(result.prompt).toBe('root replacement');
       expect(consoleWarnSpy).toHaveBeenCalled();
     } finally {
@@ -1127,11 +1127,11 @@ describe('loadAgentPrompt', () => {
     const promptsDir = path.join(customDir, 'oh-my-opencode-slim');
     fs.mkdirSync(promptsDir, { recursive: true });
     fs.writeFileSync(
-      path.join(promptsDir, 'oracle.md'),
+      path.join(promptsDir, 'Oracle.md'),
       'prompt from OPENCODE_CONFIG_DIR dir',
     );
 
-    const result = loadAgentPrompt('oracle');
+    const result = loadAgentPrompt('Oracle');
     expect(result.prompt).toBe('prompt from OPENCODE_CONFIG_DIR dir');
 
     fs.rmSync(customDir, { recursive: true, force: true });

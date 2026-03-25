@@ -1,21 +1,21 @@
 import { z } from 'zod';
 
 const FALLBACK_AGENT_NAMES = [
-  'orchestrator',
-  'oracle',
-  'designer',
-  'explorer',
-  'librarian',
-  'fixer',
+  'Ra',
+  'Oracle',
+  'Bastet',
+  'Horus',
+  'Thoth',
+  'Anubis',
 ] as const;
 
 const MANUAL_AGENT_NAMES = [
-  'orchestrator',
-  'oracle',
-  'designer',
-  'explorer',
-  'librarian',
-  'fixer',
+  'Ra',
+  'Oracle',
+  'Bastet',
+  'Horus',
+  'Thoth',
+  'Anubis',
 ] as const;
 
 const ProviderModelIdSchema = z
@@ -49,12 +49,12 @@ export const ManualAgentPlanSchema = z
 
 export const ManualPlanSchema = z
   .object({
-    orchestrator: ManualAgentPlanSchema,
-    oracle: ManualAgentPlanSchema,
-    designer: ManualAgentPlanSchema,
-    explorer: ManualAgentPlanSchema,
-    librarian: ManualAgentPlanSchema,
-    fixer: ManualAgentPlanSchema,
+    Ra: ManualAgentPlanSchema,
+    Oracle: ManualAgentPlanSchema,
+    Bastet: ManualAgentPlanSchema,
+    Horus: ManualAgentPlanSchema,
+    Thoth: ManualAgentPlanSchema,
+    Anubis: ManualAgentPlanSchema,
   })
   .strict();
 
@@ -66,12 +66,12 @@ const AgentModelChainSchema = z.array(z.string()).min(1);
 
 const FallbackChainsSchema = z
   .object({
-    orchestrator: AgentModelChainSchema.optional(),
-    oracle: AgentModelChainSchema.optional(),
-    designer: AgentModelChainSchema.optional(),
-    explorer: AgentModelChainSchema.optional(),
-    librarian: AgentModelChainSchema.optional(),
-    fixer: AgentModelChainSchema.optional(),
+    Ra: AgentModelChainSchema.optional(),
+    Oracle: AgentModelChainSchema.optional(),
+    Bastet: AgentModelChainSchema.optional(),
+    Horus: AgentModelChainSchema.optional(),
+    Thoth: AgentModelChainSchema.optional(),
+    Anubis: AgentModelChainSchema.optional(),
   })
   .catchall(AgentModelChainSchema);
 

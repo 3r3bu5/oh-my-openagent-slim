@@ -49,12 +49,12 @@ Uses OpenAI models exclusively:
   "preset": "openai",
   "presets": {
     "openai": {
-      "orchestrator": { "model": "openai/gpt-5.4", "skills": ["*"], "mcps": ["websearch"] },
+      "Ra": { "model": "openai/gpt-5.4", "skills": ["*"], "mcps": ["websearch"] },
       "oracle": { "model": "openai/gpt-5.4", "variant": "high", "skills": [], "mcps": [] },
-      "librarian": { "model": "openai/gpt-5.4-mini", "variant": "low", "skills": [], "mcps": ["websearch", "context7", "grep_app"] },
-      "explorer": { "model": "openai/gpt-5.4-mini", "variant": "low", "skills": [], "mcps": [] },
-      "designer": { "model": "openai/gpt-5.4-mini", "variant": "medium", "skills": ["agent-browser"], "mcps": [] },
-      "fixer": { "model": "openai/gpt-5.4-mini", "variant": "low", "skills": [], "mcps": [] }
+      "Thoth": { "model": "openai/gpt-5.4-mini", "variant": "low", "skills": [], "mcps": ["websearch", "context7", "grep_app"] },
+      "Horus": { "model": "openai/gpt-5.4-mini", "variant": "low", "skills": [], "mcps": [] },
+      "Bastet": { "model": "openai/gpt-5.4-mini", "variant": "medium", "skills": ["agent-browser"], "mcps": [] },
+      "Anubis": { "model": "openai/gpt-5.4-mini", "variant": "low", "skills": [], "mcps": [] }
     }
   }
 }
@@ -85,7 +85,7 @@ The plugin can fail over from one model to the next when a prompt times out or e
     "timeoutMs": 15000,
     "retryDelayMs": 500,
     "chains": {
-      "orchestrator": [
+      "Ra": [
         "openai/gpt-5.4",
         "anthropic/claude-sonnet-4-6",
         "google/gemini-3.1-pro"
@@ -98,7 +98,7 @@ The plugin can fail over from one model to the next when a prompt times out or e
 **Important notes:**
 
 - Fallback models must use the `provider/model` format
-- Chains are per agent (`orchestrator`, `oracle`, `designer`, `explorer`, `librarian`, `fixer`)
+- Chains are per agent (`Ra`, `oracle`, `Bastet`, `Horus`, `Thoth`, `Anubis`)
 - If an agent has no configured chain, only its primary model is used
 - This is documented here because it is easy to miss in the config file
 
@@ -112,14 +112,14 @@ Skills are specialized capabilities provided by external agents and tools. Unlik
 
 | Skill | Description | Assigned To |
 |-------|-------------|-------------|
-| [`simplify`](#simplify) | YAGNI code simplification expert | `orchestrator` |
-| [`agent-browser`](#agent-browser) | High-performance browser automation | `designer` |
+| [`simplify`](#simplify) | YAGNI code simplification expert | `Ra` |
+| [`agent-browser`](#agent-browser) | High-performance browser automation | `Bastet` |
 
 ### Custom Skills (bundled in repo)
 
 | Skill | Description | Assigned To |
 |-------|-------------|-------------|
-| [`cartography`](#cartography) | Repository understanding and hierarchical codemap generation | `orchestrator` |
+| [`cartography`](#cartography) | Repository understanding and hierarchical codemap generation | `Ra` |
 
 ### Simplify
 
@@ -205,10 +205,10 @@ You can customize which skills each agent is allowed to use in `~/.config/openco
 {
   "presets": {
     "my-preset": {
-      "orchestrator": {
+      "Ra": {
         "skills": ["*", "!agent-browser"]
       },
-      "designer": {
+      "Bastet": {
         "skills": ["agent-browser", "simplify"]
       }
     }
@@ -234,12 +234,12 @@ Control which agents can access which MCP servers using per-agent allowlists:
 
 | Agent | Default MCPs |
 |-------|--------------|
-| `orchestrator` | `websearch` |
-| `designer` | none |
+| `Ra` | `websearch` |
+| `Bastet` | none |
 | `oracle` | none |
-| `librarian` | `websearch`, `context7`, `grep_app` |
-| `explorer` | none |
-| `fixer` | none |
+| `Thoth` | `websearch`, `context7`, `grep_app` |
+| `Horus` | none |
+| `Anubis` | none |
 
 ### Configuration & Syntax
 
@@ -268,10 +268,10 @@ Control which agents can access which MCP servers using the `mcps` array in your
 {
   "presets": {
     "my-preset": {
-      "orchestrator": {
+      "Ra": {
         "mcps": ["websearch"]
       },
-      "librarian": {
+      "Thoth": {
         "mcps": ["websearch", "context7", "grep_app"]
       },
       "oracle": {
@@ -396,12 +396,12 @@ You can customize agent prompts by creating markdown files in `~/.config/opencod
 ```
 ~/.config/opencode/oh-my-opencode-slim/
   ├── test/
-  │   ├── orchestrator.md      # Preset-specific override (preferred)
-  │   └── explorer_append.md
-  ├── orchestrator.md          # Custom orchestrator prompt
-  ├── orchestrator_append.md   # Append to default orchestrator prompt
-  ├── explorer.md
-  ├── explorer_append.md
+  │   ├── Ra.md      # Preset-specific override (preferred)
+  │   └── Horus_append.md
+  ├── Ra.md          # Custom Ra prompt
+  ├── Ra_append.md   # Append to default Ra prompt
+  ├── Horus.md
+  ├── Horus_append.md
   └── ...
 ```
 
@@ -439,7 +439,7 @@ The plugin supports **JSONC** format for configuration files, allowing you to:
     "openai": {
       // Fast models for quick iteration
       "oracle": { "model": "openai/gpt-5.4" },
-      "explorer": { "model": "openai/gpt-5.4-mini" },
+      "Horus": { "model": "openai/gpt-5.4-mini" },
     },
   },
 

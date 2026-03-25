@@ -80,7 +80,7 @@ describe('BackgroundTaskManager', () => {
       const manager = new BackgroundTaskManager(ctx);
 
       const task = manager.launch({
-        agent: 'explorer',
+        agent: 'Horus',
         prompt: 'Find all test files',
         description: 'Test file search',
         parentSessionId: 'parent-123',
@@ -90,7 +90,7 @@ describe('BackgroundTaskManager', () => {
       // Task may be pending (in queue) or starting (already started)
       expect(['pending', 'starting']).toContain(task.status);
       expect(task.sessionId).toBeUndefined();
-      expect(task.agent).toBe('explorer');
+      expect(task.agent).toBe('Horus');
       expect(task.description).toBe('Test file search');
       expect(task.startedAt).toBeDefined();
     });
@@ -100,7 +100,7 @@ describe('BackgroundTaskManager', () => {
       const manager = new BackgroundTaskManager(ctx);
 
       const task = manager.launch({
-        agent: 'explorer',
+        agent: 'Horus',
         prompt: 'test',
         description: 'test',
         parentSessionId: 'parent-123',
@@ -123,7 +123,7 @@ describe('BackgroundTaskManager', () => {
       const manager = new BackgroundTaskManager(ctx);
 
       const task = manager.launch({
-        agent: 'explorer',
+        agent: 'Horus',
         prompt: 'test',
         description: 'test',
         parentSessionId: 'parent-123',
@@ -141,21 +141,21 @@ describe('BackgroundTaskManager', () => {
       const manager = new BackgroundTaskManager(ctx);
 
       const task1 = manager.launch({
-        agent: 'explorer',
+        agent: 'Horus',
         prompt: 'test1',
         description: 'test1',
         parentSessionId: 'parent-123',
       });
 
       const task2 = manager.launch({
-        agent: 'oracle',
+        agent: 'Oracle',
         prompt: 'test2',
         description: 'test2',
         parentSessionId: 'parent-123',
       });
 
       const task3 = manager.launch({
-        agent: 'fixer',
+        agent: 'Anubis',
         prompt: 'test3',
         description: 'test3',
         parentSessionId: 'parent-123',
@@ -183,7 +183,7 @@ describe('BackgroundTaskManager', () => {
       const manager = new BackgroundTaskManager(ctx);
 
       const task = manager.launch({
-        agent: 'explorer',
+        agent: 'Horus',
         prompt: 'test',
         description: 'test',
         parentSessionId: 'parent-123',
@@ -211,7 +211,7 @@ describe('BackgroundTaskManager', () => {
       const manager = new BackgroundTaskManager(ctx);
 
       const task = manager.launch({
-        agent: 'explorer',
+        agent: 'Horus',
         prompt: 'test',
         description: 'test',
         parentSessionId: 'parent-123',
@@ -237,7 +237,7 @@ describe('BackgroundTaskManager', () => {
       const manager = new BackgroundTaskManager(ctx);
 
       const task = manager.launch({
-        agent: 'explorer',
+        agent: 'Horus',
         prompt: 'test',
         description: 'test',
         parentSessionId: 'parent-123',
@@ -273,7 +273,7 @@ describe('BackgroundTaskManager', () => {
       const manager = new BackgroundTaskManager(ctx);
 
       const task = manager.launch({
-        agent: 'explorer',
+        agent: 'Horus',
         prompt: 'test',
         description: 'test',
         parentSessionId: 'parent-123',
@@ -300,7 +300,7 @@ describe('BackgroundTaskManager', () => {
       const manager = new BackgroundTaskManager(ctx);
 
       const task = manager.launch({
-        agent: 'explorer',
+        agent: 'Horus',
         prompt: 'test',
         description: 'test',
         parentSessionId: 'parent-123',
@@ -339,7 +339,7 @@ describe('BackgroundTaskManager', () => {
       const manager = new BackgroundTaskManager(ctx);
 
       const task = manager.launch({
-        agent: 'explorer',
+        agent: 'Horus',
         prompt: 'test',
         description: 'test',
         parentSessionId: 'parent-123',
@@ -378,7 +378,7 @@ describe('BackgroundTaskManager', () => {
       const manager = new BackgroundTaskManager(ctx);
 
       const task = manager.launch({
-        agent: 'explorer',
+        agent: 'Horus',
         prompt: 'test',
         description: 'test',
         parentSessionId: 'parent-123',
@@ -396,7 +396,7 @@ describe('BackgroundTaskManager', () => {
       const manager = new BackgroundTaskManager(ctx);
 
       const task = manager.launch({
-        agent: 'explorer',
+        agent: 'Horus',
         prompt: 'test',
         description: 'test',
         parentSessionId: 'parent-123',
@@ -426,14 +426,14 @@ describe('BackgroundTaskManager', () => {
       const manager = new BackgroundTaskManager(ctx);
 
       manager.launch({
-        agent: 'explorer',
+        agent: 'Horus',
         prompt: 'test1',
         description: 'test1',
         parentSessionId: 'parent-123',
       });
 
       manager.launch({
-        agent: 'oracle',
+        agent: 'Oracle',
         prompt: 'test2',
         description: 'test2',
         parentSessionId: 'parent-123',
@@ -457,7 +457,7 @@ describe('BackgroundTaskManager', () => {
       const manager = new BackgroundTaskManager(ctx);
 
       const task = manager.launch({
-        agent: 'explorer',
+        agent: 'Horus',
         prompt: 'test',
         description: 'test',
         parentSessionId: 'parent-123',
@@ -517,7 +517,7 @@ describe('BackgroundTaskManager', () => {
       });
 
       const task = manager.launch({
-        agent: 'explorer',
+        agent: 'Horus',
         prompt: 'test',
         description: 'test',
         parentSessionId: 'parent-123',
@@ -557,7 +557,7 @@ describe('BackgroundTaskManager', () => {
       });
 
       const task = manager.launch({
-        agent: 'explorer',
+        agent: 'Horus',
         prompt: 'test',
         description: 'test',
         parentSessionId: 'parent-123',
@@ -729,7 +729,7 @@ describe('BackgroundTaskManager', () => {
 
       // First, simulate orchestrator starting (parent session with no parent)
       const orchestratorTask = manager.launch({
-        agent: 'orchestrator',
+        agent: 'Ra',
         prompt: 'test',
         description: 'test',
         parentSessionId: 'root-session',
@@ -745,7 +745,7 @@ describe('BackgroundTaskManager', () => {
 
       // Launch explorer from orchestrator - explorer is a leaf node so tools disabled
       manager.launch({
-        agent: 'explorer',
+        agent: 'Horus',
         prompt: 'test',
         description: 'test',
         parentSessionId: orchestratorSessionId,
@@ -771,7 +771,7 @@ describe('BackgroundTaskManager', () => {
 
       // First, launch an orchestrator task
       const orchestratorTask = manager.launch({
-        agent: 'orchestrator',
+        agent: 'Ra',
         prompt: 'test',
         description: 'test',
         parentSessionId: 'root-session',
@@ -786,7 +786,7 @@ describe('BackgroundTaskManager', () => {
         throw new Error('Expected sessionId to be defined');
 
       manager.launch({
-        agent: 'designer',
+        agent: 'Bastet',
         prompt: 'test',
         description: 'test',
         parentSessionId: orchestratorSessionId,
@@ -812,7 +812,7 @@ describe('BackgroundTaskManager', () => {
 
       // Launch a designer task
       const designerTask = manager.launch({
-        agent: 'designer',
+        agent: 'Bastet',
         prompt: 'test',
         description: 'test',
         parentSessionId: 'root-session',
@@ -827,7 +827,7 @@ describe('BackgroundTaskManager', () => {
         throw new Error('Expected sessionId to be defined');
 
       manager.launch({
-        agent: 'explorer',
+        agent: 'Horus',
         prompt: 'test',
         description: 'test',
         parentSessionId: designerSessionId,
@@ -852,7 +852,7 @@ describe('BackgroundTaskManager', () => {
 
       // Launch a librarian task
       const librarianTask = manager.launch({
-        agent: 'librarian',
+        agent: 'Thoth',
         prompt: 'test',
         description: 'test',
         parentSessionId: 'root-session',
@@ -867,7 +867,7 @@ describe('BackgroundTaskManager', () => {
         throw new Error('Expected sessionId to be defined');
 
       manager.launch({
-        agent: 'explorer',
+        agent: 'Horus',
         prompt: 'test',
         description: 'test',
         parentSessionId: librarianSessionId,
@@ -892,7 +892,7 @@ describe('BackgroundTaskManager', () => {
 
       // Launch an oracle task
       const oracleTask = manager.launch({
-        agent: 'oracle',
+        agent: 'Oracle',
         prompt: 'test',
         description: 'test',
         parentSessionId: 'root-session',
@@ -906,7 +906,7 @@ describe('BackgroundTaskManager', () => {
       if (!oracleSessionId) throw new Error('Expected sessionId to be defined');
 
       manager.launch({
-        agent: 'explorer',
+        agent: 'Horus',
         prompt: 'test',
         description: 'test',
         parentSessionId: oracleSessionId,
@@ -931,7 +931,7 @@ describe('BackgroundTaskManager', () => {
 
       // Launch explorer from unknown parent session (root orchestrator)
       manager.launch({
-        agent: 'explorer',
+        agent: 'Horus',
         prompt: 'test',
         description: 'test',
         parentSessionId: 'unknown-session-id',
@@ -956,7 +956,7 @@ describe('BackgroundTaskManager', () => {
       const manager = new BackgroundTaskManager(ctx);
 
       const orchestratorTask = manager.launch({
-        agent: 'orchestrator',
+        agent: 'Ra',
         prompt: 'test',
         description: 'test',
         parentSessionId: 'root-session',
@@ -970,17 +970,15 @@ describe('BackgroundTaskManager', () => {
         throw new Error('Expected sessionId to be defined');
 
       // Orchestrator can delegate to all subagents
-      expect(manager.isAgentAllowed(orchestratorSessionId, 'explorer')).toBe(
+      expect(manager.isAgentAllowed(orchestratorSessionId, 'Horus')).toBe(true);
+      expect(manager.isAgentAllowed(orchestratorSessionId, 'Anubis')).toBe(
         true,
       );
-      expect(manager.isAgentAllowed(orchestratorSessionId, 'fixer')).toBe(true);
-      expect(manager.isAgentAllowed(orchestratorSessionId, 'designer')).toBe(
+      expect(manager.isAgentAllowed(orchestratorSessionId, 'Bastet')).toBe(
         true,
       );
-      expect(manager.isAgentAllowed(orchestratorSessionId, 'librarian')).toBe(
-        true,
-      );
-      expect(manager.isAgentAllowed(orchestratorSessionId, 'oracle')).toBe(
+      expect(manager.isAgentAllowed(orchestratorSessionId, 'Thoth')).toBe(true);
+      expect(manager.isAgentAllowed(orchestratorSessionId, 'Oracle')).toBe(
         true,
       );
     });
@@ -990,7 +988,7 @@ describe('BackgroundTaskManager', () => {
       const manager = new BackgroundTaskManager(ctx);
 
       const fixerTask = manager.launch({
-        agent: 'fixer',
+        agent: 'Anubis',
         prompt: 'test',
         description: 'test',
         parentSessionId: 'root-session',
@@ -1003,9 +1001,9 @@ describe('BackgroundTaskManager', () => {
       if (!fixerSessionId) throw new Error('Expected sessionId to be defined');
 
       // Fixer cannot delegate to any subagents
-      expect(manager.isAgentAllowed(fixerSessionId, 'explorer')).toBe(false);
-      expect(manager.isAgentAllowed(fixerSessionId, 'oracle')).toBe(false);
-      expect(manager.isAgentAllowed(fixerSessionId, 'designer')).toBe(false);
+      expect(manager.isAgentAllowed(fixerSessionId, 'Horus')).toBe(false);
+      expect(manager.isAgentAllowed(fixerSessionId, 'Oracle')).toBe(false);
+      expect(manager.isAgentAllowed(fixerSessionId, 'Bastet')).toBe(false);
     });
 
     test('isAgentAllowed returns false for leaf agents', async () => {
@@ -1014,7 +1012,7 @@ describe('BackgroundTaskManager', () => {
 
       // Explorer is a leaf agent
       const explorerTask = manager.launch({
-        agent: 'explorer',
+        agent: 'Horus',
         prompt: 'test',
         description: 'test',
         parentSessionId: 'root-session',
@@ -1027,11 +1025,11 @@ describe('BackgroundTaskManager', () => {
       if (!explorerSessionId)
         throw new Error('Expected sessionId to be defined');
 
-      expect(manager.isAgentAllowed(explorerSessionId, 'fixer')).toBe(false);
+      expect(manager.isAgentAllowed(explorerSessionId, 'Anubis')).toBe(false);
 
       // Librarian is also a leaf agent
       const librarianTask = manager.launch({
-        agent: 'librarian',
+        agent: 'Thoth',
         prompt: 'test',
         description: 'test',
         parentSessionId: 'root-session',
@@ -1044,9 +1042,7 @@ describe('BackgroundTaskManager', () => {
       if (!librarianSessionId)
         throw new Error('Expected sessionId to be defined');
 
-      expect(manager.isAgentAllowed(librarianSessionId, 'explorer')).toBe(
-        false,
-      );
+      expect(manager.isAgentAllowed(librarianSessionId, 'Horus')).toBe(false);
     });
 
     test('isAgentAllowed treats unknown session as root orchestrator', () => {
@@ -1054,11 +1050,11 @@ describe('BackgroundTaskManager', () => {
       const manager = new BackgroundTaskManager(ctx);
 
       // Unknown sessions default to orchestrator, which can delegate to all subagents
-      expect(manager.isAgentAllowed('unknown-session', 'explorer')).toBe(true);
-      expect(manager.isAgentAllowed('unknown-session', 'fixer')).toBe(true);
-      expect(manager.isAgentAllowed('unknown-session', 'designer')).toBe(true);
-      expect(manager.isAgentAllowed('unknown-session', 'librarian')).toBe(true);
-      expect(manager.isAgentAllowed('unknown-session', 'oracle')).toBe(true);
+      expect(manager.isAgentAllowed('unknown-session', 'Horus')).toBe(true);
+      expect(manager.isAgentAllowed('unknown-session', 'Anubis')).toBe(true);
+      expect(manager.isAgentAllowed('unknown-session', 'Bastet')).toBe(true);
+      expect(manager.isAgentAllowed('unknown-session', 'Thoth')).toBe(true);
+      expect(manager.isAgentAllowed('unknown-session', 'Oracle')).toBe(true);
     });
 
     test('unknown agent type defaults to explorer-only delegation', async () => {
@@ -1080,12 +1076,10 @@ describe('BackgroundTaskManager', () => {
       if (!customSessionId) throw new Error('Expected sessionId to be defined');
 
       // Unknown agent types should default to explorer-only
-      expect(manager.getAllowedSubagents(customSessionId)).toEqual([
-        'explorer',
-      ]);
-      expect(manager.isAgentAllowed(customSessionId, 'explorer')).toBe(true);
-      expect(manager.isAgentAllowed(customSessionId, 'fixer')).toBe(false);
-      expect(manager.isAgentAllowed(customSessionId, 'oracle')).toBe(false);
+      expect(manager.getAllowedSubagents(customSessionId)).toEqual(['Horus']);
+      expect(manager.isAgentAllowed(customSessionId, 'Horus')).toBe(true);
+      expect(manager.isAgentAllowed(customSessionId, 'Anubis')).toBe(false);
+      expect(manager.isAgentAllowed(customSessionId, 'Oracle')).toBe(false);
     });
 
     test('spawned explorer from custom agent gets tools disabled (leaf node)', async () => {
@@ -1108,7 +1102,7 @@ describe('BackgroundTaskManager', () => {
 
       // Launch explorer from custom agent - explorer is leaf, tools disabled
       manager.launch({
-        agent: 'explorer',
+        agent: 'Horus',
         prompt: 'test',
         description: 'test',
         parentSessionId: parentSessionId,
@@ -1134,9 +1128,9 @@ describe('BackgroundTaskManager', () => {
 
       // Level 1: Launch orchestrator
       const orchestratorTask = manager.launch({
-        agent: 'orchestrator',
+        agent: 'Ra',
         prompt: 'coordinate work',
-        description: 'orchestrator',
+        description: 'Ra',
         parentSessionId: 'root-session',
       });
 
@@ -1149,9 +1143,9 @@ describe('BackgroundTaskManager', () => {
 
       // Level 2: Launch designer from orchestrator
       const designerTask = manager.launch({
-        agent: 'designer',
+        agent: 'Bastet',
         prompt: 'design UI',
-        description: 'designer',
+        description: 'Bastet',
         parentSessionId: orchestratorSessionId,
       });
 
@@ -1173,15 +1167,15 @@ describe('BackgroundTaskManager', () => {
       });
 
       // Designer is a leaf node and cannot spawn subagents
-      expect(manager.isAgentAllowed(designerSessionId, 'explorer')).toBe(false);
-      expect(manager.isAgentAllowed(designerSessionId, 'fixer')).toBe(false);
-      expect(manager.isAgentAllowed(designerSessionId, 'oracle')).toBe(false);
+      expect(manager.isAgentAllowed(designerSessionId, 'Horus')).toBe(false);
+      expect(manager.isAgentAllowed(designerSessionId, 'Anubis')).toBe(false);
+      expect(manager.isAgentAllowed(designerSessionId, 'Oracle')).toBe(false);
 
       // Level 3: Launch explorer from designer
       const explorerTask = manager.launch({
-        agent: 'explorer',
+        agent: 'Horus',
         prompt: 'find patterns',
-        description: 'explorer',
+        description: 'Horus',
         parentSessionId: designerSessionId,
       });
 
@@ -1209,7 +1203,7 @@ describe('BackgroundTaskManager', () => {
 
       // Orchestrator spawns fixer
       const orchestratorTask = manager.launch({
-        agent: 'orchestrator',
+        agent: 'Ra',
         prompt: 'test',
         description: 'test',
         parentSessionId: 'root-session',
@@ -1223,7 +1217,7 @@ describe('BackgroundTaskManager', () => {
         throw new Error('Expected sessionId to be defined');
 
       const fixerTask = manager.launch({
-        agent: 'fixer',
+        agent: 'Anubis',
         prompt: 'test',
         description: 'test',
         parentSessionId: orchestratorSessionId,
@@ -1236,13 +1230,13 @@ describe('BackgroundTaskManager', () => {
       if (!fixerSessionId) throw new Error('Expected sessionId to be defined');
 
       // Fixer should be blocked from spawning these agents
-      expect(manager.isAgentAllowed(fixerSessionId, 'oracle')).toBe(false);
-      expect(manager.isAgentAllowed(fixerSessionId, 'designer')).toBe(false);
-      expect(manager.isAgentAllowed(fixerSessionId, 'librarian')).toBe(false);
-      expect(manager.isAgentAllowed(fixerSessionId, 'fixer')).toBe(false);
+      expect(manager.isAgentAllowed(fixerSessionId, 'Oracle')).toBe(false);
+      expect(manager.isAgentAllowed(fixerSessionId, 'Bastet')).toBe(false);
+      expect(manager.isAgentAllowed(fixerSessionId, 'Thoth')).toBe(false);
+      expect(manager.isAgentAllowed(fixerSessionId, 'Anubis')).toBe(false);
 
       // Explorer is also blocked (fixer is a leaf node)
-      expect(manager.isAgentAllowed(fixerSessionId, 'explorer')).toBe(false);
+      expect(manager.isAgentAllowed(fixerSessionId, 'Horus')).toBe(false);
       expect(manager.getAllowedSubagents(fixerSessionId)).toEqual([]);
     });
 
@@ -1261,7 +1255,7 @@ describe('BackgroundTaskManager', () => {
 
       // Launch designer
       const designerTask = manager.launch({
-        agent: 'designer',
+        agent: 'Bastet',
         prompt: 'test',
         description: 'test',
         parentSessionId: 'root-session',
@@ -1276,7 +1270,7 @@ describe('BackgroundTaskManager', () => {
 
       // Launch explorer from designer BEFORE designer completes
       const explorerTask = manager.launch({
-        agent: 'explorer',
+        agent: 'Horus',
         prompt: 'test',
         description: 'test',
         parentSessionId: designerSessionId,
@@ -1311,7 +1305,7 @@ describe('BackgroundTaskManager', () => {
       expect(designerTask.status).toBe('completed');
 
       // Explorer's own session tracking is independent — still works
-      expect(manager.isAgentAllowed(explorerSessionId, 'fixer')).toBe(false);
+      expect(manager.isAgentAllowed(explorerSessionId, 'Anubis')).toBe(false);
       expect(manager.getAllowedSubagents(explorerSessionId)).toEqual([]);
     });
 
@@ -1321,7 +1315,7 @@ describe('BackgroundTaskManager', () => {
 
       // Orchestrator -> all 5 subagent names
       const orchestratorTask = manager.launch({
-        agent: 'orchestrator',
+        agent: 'Ra',
         prompt: 'test',
         description: 'test',
         parentSessionId: 'root-session',
@@ -1335,16 +1329,16 @@ describe('BackgroundTaskManager', () => {
         throw new Error('Expected sessionId to be defined');
 
       expect(manager.getAllowedSubagents(orchestratorSessionId)).toEqual([
-        'explorer',
-        'librarian',
-        'oracle',
-        'designer',
-        'fixer',
+        'Horus',
+        'Thoth',
+        'Oracle',
+        'Bastet',
+        'Anubis',
       ]);
 
       // Fixer -> empty (leaf node)
       const fixerTask = manager.launch({
-        agent: 'fixer',
+        agent: 'Anubis',
         prompt: 'test',
         description: 'test',
         parentSessionId: 'root-session',
@@ -1360,7 +1354,7 @@ describe('BackgroundTaskManager', () => {
 
       // Designer -> only explorer
       const designerTask = manager.launch({
-        agent: 'designer',
+        agent: 'Bastet',
         prompt: 'test',
         description: 'test',
         parentSessionId: 'root-session',
@@ -1377,7 +1371,7 @@ describe('BackgroundTaskManager', () => {
 
       // Explorer -> empty (leaf)
       const explorerTask = manager.launch({
-        agent: 'explorer',
+        agent: 'Horus',
         prompt: 'test',
         description: 'test',
         parentSessionId: 'root-session',
@@ -1394,11 +1388,11 @@ describe('BackgroundTaskManager', () => {
 
       // Unknown session -> orchestrator (all subagents)
       expect(manager.getAllowedSubagents('unknown-session')).toEqual([
-        'explorer',
-        'librarian',
-        'oracle',
-        'designer',
-        'fixer',
+        'Horus',
+        'Thoth',
+        'Oracle',
+        'Bastet',
+        'Anubis',
       ]);
     });
   });

@@ -1,6 +1,6 @@
 import type { AgentDefinition } from './orchestrator';
 
-const FIXER_PROMPT = `You are Fixer - a fast, focused implementation specialist.
+const FIXER_PROMPT = `You are Anubis - a fast, focused implementation specialist.
 
 **Role**: Execute code changes efficiently. You receive complete context from research agents and clear task specifications from the Orchestrator. Your job is to implement, not plan or research.
 
@@ -55,7 +55,7 @@ export function createFixerAgent(
   }
 
   return {
-    name: 'fixer',
+    name: 'Anubis',
     description:
       'Fast implementation specialist. Receives complete context and task spec, executes code changes efficiently.',
     config: {

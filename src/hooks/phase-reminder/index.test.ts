@@ -8,7 +8,7 @@ describe('createPhaseReminderHook', () => {
     const output = {
       messages: [
         {
-          info: { role: 'user', agent: 'orchestrator' },
+          info: { role: 'user', agent: 'Ra' },
           parts: [{ type: 'text', text: 'hello' }],
         },
       ],
@@ -26,7 +26,7 @@ describe('createPhaseReminderHook', () => {
     const output = {
       messages: [
         {
-          info: { role: 'user', agent: 'explorer' },
+          info: { role: 'user', agent: 'Horus' },
           parts: [{ type: 'text', text: 'hello' }],
         },
       ],

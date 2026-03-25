@@ -1,6 +1,6 @@
 import type { AgentDefinition } from './orchestrator';
 
-const EXPLORER_PROMPT = `You are Explorer - a fast codebase navigation specialist.
+const EXPLORER_PROMPT = `You are Horus - a fast codebase navigation specialist.
 
 **Role**: Quick contextual grep for codebases. Answer "Where is X?", "Find Y", "Which file has Z".
 
@@ -43,7 +43,7 @@ export function createExplorerAgent(
   }
 
   return {
-    name: 'explorer',
+    name: 'Horus',
     description:
       "Fast codebase search and pattern matching. Use for finding files, locating code patterns, and answering 'where is X?' questions.",
     config: {

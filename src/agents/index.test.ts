@@ -4,55 +4,55 @@ import { SUBAGENT_NAMES } from '../config';
 import { createAgents, getAgentConfigs, isSubagent } from './index';
 
 describe('agent alias backward compatibility', () => {
-  test("applies 'explore' config to 'explorer' agent", () => {
+  test("applies 'explore' config to 'Horus' agent", () => {
     const config: PluginConfig = {
       agents: {
         explore: { model: 'test/old-explore-model' },
       },
     };
     const agents = createAgents(config);
-    const explorer = agents.find((a) => a.name === 'explorer');
-    expect(explorer).toBeDefined();
-    expect(explorer?.config.model).toBe('test/old-explore-model');
+    const Horus = agents.find((a) => a.name === 'Horus');
+    expect(Horus).toBeDefined();
+    expect(Horus?.config.model).toBe('test/old-explore-model');
   });
 
-  test("applies 'frontend-ui-ux-engineer' config to 'designer' agent", () => {
+  test("applies 'frontend-ui-ux-engineer' config to 'Bastet' agent", () => {
     const config: PluginConfig = {
       agents: {
         'frontend-ui-ux-engineer': { model: 'test/old-frontend-model' },
       },
     };
     const agents = createAgents(config);
-    const designer = agents.find((a) => a.name === 'designer');
-    expect(designer).toBeDefined();
-    expect(designer?.config.model).toBe('test/old-frontend-model');
+    const Bastet = agents.find((a) => a.name === 'Bastet');
+    expect(Bastet).toBeDefined();
+    expect(Bastet?.config.model).toBe('test/old-frontend-model');
   });
 
   test('new name takes priority over old alias', () => {
     const config: PluginConfig = {
       agents: {
         explore: { model: 'old-model' },
-        explorer: { model: 'new-model' },
+        Horus: { model: 'new-model' },
       },
     };
     const agents = createAgents(config);
-    const explorer = agents.find((a) => a.name === 'explorer');
-    expect(explorer?.config.model).toBe('new-model');
+    const Horus = agents.find((a) => a.name === 'Horus');
+    expect(Horus?.config.model).toBe('new-model');
   });
 
   test('new agent names work directly', () => {
     const config: PluginConfig = {
       agents: {
-        explorer: { model: 'direct-explorer' },
-        designer: { model: 'direct-designer' },
+        Horus: { model: 'direct-Horus' },
+        Bastet: { model: 'direct-Bastet' },
       },
     };
     const agents = createAgents(config);
-    expect(agents.find((a) => a.name === 'explorer')?.config.model).toBe(
-      'direct-explorer',
+    expect(agents.find((a) => a.name === 'Horus')?.config.model).toBe(
+      'direct-Horus',
     );
-    expect(agents.find((a) => a.name === 'designer')?.config.model).toBe(
-      'direct-designer',
+    expect(agents.find((a) => a.name === 'Bastet')?.config.model).toBe(
+      'direct-Bastet',
     );
   });
 
@@ -63,8 +63,8 @@ describe('agent alias backward compatibility', () => {
       },
     };
     const agents = createAgents(config);
-    const explorer = agents.find((a) => a.name === 'explorer');
-    expect(explorer?.config.temperature).toBe(0.5);
+    const Horus = agents.find((a) => a.name === 'Horus');
+    expect(Horus?.config.temperature).toBe(0.5);
   });
 
   test('variant override via old alias', () => {
@@ -74,77 +74,77 @@ describe('agent alias backward compatibility', () => {
       },
     };
     const agents = createAgents(config);
-    const explorer = agents.find((a) => a.name === 'explorer');
-    expect(explorer?.config.variant).toBe('low');
+    const Horus = agents.find((a) => a.name === 'Horus');
+    expect(Horus?.config.variant).toBe('low');
   });
 });
 
 describe('fixer agent fallback', () => {
-  test('fixer inherits librarian model when no fixer config provided', () => {
+  test('Anubis inherits Thoth model when no Anubis config provided', () => {
     const config: PluginConfig = {
       agents: {
-        librarian: { model: 'librarian-custom-model' },
+        Thoth: { model: 'Thoth-custom-model' },
       },
     };
     const agents = createAgents(config);
-    const fixer = agents.find((a) => a.name === 'fixer');
-    const librarian = agents.find((a) => a.name === 'librarian');
-    expect(fixer?.config.model).toBe(librarian?.config.model);
+    const Anubis = agents.find((a) => a.name === 'Anubis');
+    const Thoth = agents.find((a) => a.name === 'Thoth');
+    expect(Anubis?.config.model).toBe(Thoth?.config.model);
   });
 
-  test('fixer uses its own model when explicitly configured', () => {
+  test('Anubis uses its own model when explicitly configured', () => {
     const config: PluginConfig = {
       agents: {
-        librarian: { model: 'librarian-model' },
-        fixer: { model: 'fixer-specific-model' },
+        Thoth: { model: 'Thoth-model' },
+        Anubis: { model: 'Anubis-specific-model' },
       },
     };
     const agents = createAgents(config);
-    const fixer = agents.find((a) => a.name === 'fixer');
-    expect(fixer?.config.model).toBe('fixer-specific-model');
+    const Anubis = agents.find((a) => a.name === 'Anubis');
+    expect(Anubis?.config.model).toBe('Anubis-specific-model');
   });
 });
 
-describe('orchestrator agent', () => {
-  test('orchestrator is first in agents array', () => {
+describe('Ra agent', () => {
+  test('Ra is first in agents array', () => {
     const agents = createAgents();
-    expect(agents[0].name).toBe('orchestrator');
+    expect(agents[0].name).toBe('Ra');
   });
 
-  test('orchestrator has question permission set to allow', () => {
+  test('Ra has question permission set to allow', () => {
     const agents = createAgents();
-    const orchestrator = agents.find((a) => a.name === 'orchestrator');
-    expect(orchestrator?.config.permission).toBeDefined();
-    expect((orchestrator?.config.permission as any).question).toBe('allow');
+    const Ra = agents.find((a) => a.name === 'Ra');
+    expect(Ra?.config.permission).toBeDefined();
+    expect((Ra?.config.permission as any).question).toBe('allow');
   });
 
-  test('orchestrator accepts overrides', () => {
+  test('Ra accepts overrides', () => {
     const config: PluginConfig = {
       agents: {
-        orchestrator: { model: 'custom-orchestrator-model', temperature: 0.3 },
+        Ra: { model: 'custom-Ra-model', temperature: 0.3 },
       },
     };
     const agents = createAgents(config);
-    const orchestrator = agents.find((a) => a.name === 'orchestrator');
-    expect(orchestrator?.config.model).toBe('custom-orchestrator-model');
-    expect(orchestrator?.config.temperature).toBe(0.3);
+    const Ra = agents.find((a) => a.name === 'Ra');
+    expect(Ra?.config.model).toBe('custom-Ra-model');
+    expect(Ra?.config.temperature).toBe(0.3);
   });
 
-  test('orchestrator accepts variant override', () => {
+  test('Ra accepts variant override', () => {
     const config: PluginConfig = {
       agents: {
-        orchestrator: { variant: 'high' },
+        Ra: { variant: 'high' },
       },
     };
     const agents = createAgents(config);
-    const orchestrator = agents.find((a) => a.name === 'orchestrator');
-    expect(orchestrator?.config.variant).toBe('high');
+    const Ra = agents.find((a) => a.name === 'Ra');
+    expect(Ra?.config.variant).toBe('high');
   });
 
-  test('orchestrator stores model array with per-model variants in _modelArray', () => {
+  test('Ra stores model array with per-model variants in _modelArray', () => {
     const config: PluginConfig = {
       agents: {
-        orchestrator: {
+        Ra: {
           model: [
             { id: 'google/gemini-3-pro', variant: 'high' },
             { id: 'github-copilot/claude-3.5-haiku' },
@@ -154,13 +154,13 @@ describe('orchestrator agent', () => {
       },
     };
     const agents = createAgents(config);
-    const orchestrator = agents.find((a) => a.name === 'orchestrator');
-    expect(orchestrator?._modelArray).toEqual([
+    const Ra = agents.find((a) => a.name === 'Ra');
+    expect(Ra?._modelArray).toEqual([
       { id: 'google/gemini-3-pro', variant: 'high' },
       { id: 'github-copilot/claude-3.5-haiku' },
       { id: 'openai/gpt-4' },
     ]);
-    expect(orchestrator?.config.model).toBeUndefined();
+    expect(Ra?.config.model).toBeUndefined();
   });
 });
 
@@ -168,7 +168,7 @@ describe('per-model variant in array config', () => {
   test('subagent stores model array with per-model variants', () => {
     const config: PluginConfig = {
       agents: {
-        explorer: {
+        Horus: {
           model: [
             { id: 'google/gemini-3-flash', variant: 'low' },
             'openai/gpt-4o-mini',
@@ -177,18 +177,18 @@ describe('per-model variant in array config', () => {
       },
     };
     const agents = createAgents(config);
-    const explorer = agents.find((a) => a.name === 'explorer');
-    expect(explorer?._modelArray).toEqual([
+    const Horus = agents.find((a) => a.name === 'Horus');
+    expect(Horus?._modelArray).toEqual([
       { id: 'google/gemini-3-flash', variant: 'low' },
       { id: 'openai/gpt-4o-mini' },
     ]);
-    expect(explorer?.config.model).toBeUndefined();
+    expect(Horus?.config.model).toBeUndefined();
   });
 
   test('top-level variant preserved alongside per-model variants', () => {
     const config: PluginConfig = {
       agents: {
-        orchestrator: {
+        Ra: {
           model: [
             { id: 'google/gemini-3-pro', variant: 'high' },
             'openai/gpt-4',
@@ -198,43 +198,42 @@ describe('per-model variant in array config', () => {
       },
     };
     const agents = createAgents(config);
-    const orchestrator = agents.find((a) => a.name === 'orchestrator');
+    const Ra = agents.find((a) => a.name === 'Ra');
     // top-level variant still set as default
-    expect(orchestrator?.config.variant).toBe('low');
+    expect(Ra?.config.variant).toBe('low');
     // per-model variants stored in _modelArray
-    expect(orchestrator?._modelArray?.[0]?.variant).toBe('high');
-    expect(orchestrator?._modelArray?.[1]?.variant).toBeUndefined();
+    expect(Ra?._modelArray?.[0]?.variant).toBe('high');
+    expect(Ra?._modelArray?.[1]?.variant).toBeUndefined();
   });
 });
 
 describe('skill permissions', () => {
-  test('orchestrator gets cartography skill allowed by default', () => {
+  test('Ra gets cartography skill allowed by default', () => {
     const agents = createAgents();
-    const orchestrator = agents.find((a) => a.name === 'orchestrator');
-    expect(orchestrator).toBeDefined();
-    const skillPerm = (
-      orchestrator?.config.permission as Record<string, unknown>
-    )?.skill as Record<string, string>;
-    // orchestrator gets wildcard allow (from RECOMMENDED_SKILLS wildcard entry)
+    const Ra = agents.find((a) => a.name === 'Ra');
+    expect(Ra).toBeDefined();
+    const skillPerm = (Ra?.config.permission as Record<string, unknown>)
+      ?.skill as Record<string, string>;
+    // Ra gets wildcard allow (from RECOMMENDED_SKILLS wildcard entry)
     expect(skillPerm?.['*']).toBe('allow');
-    // CUSTOM_SKILLS loop must also add a named cartography entry for orchestrator
+    // CUSTOM_SKILLS loop must also add a named cartography entry for Ra
     expect(skillPerm?.cartography).toBe('allow');
   });
 
-  test('explorer gets cartography skill allowed by default', () => {
+  test('Horus gets cartography skill allowed by default', () => {
     const agents = createAgents();
-    const explorer = agents.find((a) => a.name === 'explorer');
-    expect(explorer).toBeDefined();
-    const skillPerm = (explorer?.config.permission as Record<string, unknown>)
+    const Horus = agents.find((a) => a.name === 'Horus');
+    expect(Horus).toBeDefined();
+    const skillPerm = (Horus?.config.permission as Record<string, unknown>)
       ?.skill as Record<string, string>;
     expect(skillPerm?.cartography).toBe('allow');
   });
 
-  test('oracle gets requesting-code-review skill allowed by default', () => {
+  test('Oracle gets requesting-code-review skill allowed by default', () => {
     const agents = createAgents();
-    const oracle = agents.find((a) => a.name === 'oracle');
-    expect(oracle).toBeDefined();
-    const skillPerm = (oracle?.config.permission as Record<string, unknown>)
+    const Oracle = agents.find((a) => a.name === 'Oracle');
+    expect(Oracle).toBeDefined();
+    const skillPerm = (Oracle?.config.permission as Record<string, unknown>)
       ?.skill as Record<string, string>;
     expect(skillPerm?.['requesting-code-review']).toBe('allow');
   });
@@ -242,15 +241,15 @@ describe('skill permissions', () => {
 
 describe('isSubagent type guard', () => {
   test('returns true for valid subagent names', () => {
-    expect(isSubagent('explorer')).toBe(true);
-    expect(isSubagent('librarian')).toBe(true);
-    expect(isSubagent('oracle')).toBe(true);
-    expect(isSubagent('designer')).toBe(true);
-    expect(isSubagent('fixer')).toBe(true);
+    expect(isSubagent('Horus')).toBe(true);
+    expect(isSubagent('Thoth')).toBe(true);
+    expect(isSubagent('Oracle')).toBe(true);
+    expect(isSubagent('Bastet')).toBe(true);
+    expect(isSubagent('Anubis')).toBe(true);
   });
 
-  test('returns false for orchestrator', () => {
-    expect(isSubagent('orchestrator')).toBe(false);
+  test('returns false for Ra', () => {
+    expect(isSubagent('Ra')).toBe(false);
   });
 
   test('returns false for invalid agent names', () => {
@@ -261,17 +260,17 @@ describe('isSubagent type guard', () => {
 });
 
 describe('agent classification', () => {
-  test('SUBAGENT_NAMES excludes orchestrator', () => {
-    expect(SUBAGENT_NAMES).not.toContain('orchestrator');
-    expect(SUBAGENT_NAMES).toContain('explorer');
-    expect(SUBAGENT_NAMES).toContain('fixer');
+  test('SUBAGENT_NAMES excludes Ra', () => {
+    expect(SUBAGENT_NAMES).not.toContain('Ra');
+    expect(SUBAGENT_NAMES).toContain('Horus');
+    expect(SUBAGENT_NAMES).toContain('Anubis');
   });
 
   test('getAgentConfigs applies correct classification visibility and mode', () => {
     const configs = getAgentConfigs();
 
     // Primary agent
-    expect(configs.orchestrator.mode).toBe('primary');
+    expect(configs.Ra.mode).toBe('primary');
 
     // Subagents
     for (const name of SUBAGENT_NAMES) {
@@ -284,12 +283,12 @@ describe('createAgents', () => {
   test('creates all agents without config', () => {
     const agents = createAgents();
     const names = agents.map((a) => a.name);
-    expect(names).toContain('orchestrator');
-    expect(names).toContain('explorer');
-    expect(names).toContain('designer');
-    expect(names).toContain('oracle');
-    expect(names).toContain('librarian');
-    expect(names).toContain('fixer');
+    expect(names).toContain('Ra');
+    expect(names).toContain('Horus');
+    expect(names).toContain('Bastet');
+    expect(names).toContain('Oracle');
+    expect(names).toContain('Thoth');
+    expect(names).toContain('Anubis');
   });
 
   test('creates exactly 6 agents (1 primary + 5 subagents)', () => {
@@ -301,16 +300,16 @@ describe('createAgents', () => {
 describe('getAgentConfigs', () => {
   test('returns config record keyed by agent name', () => {
     const configs = getAgentConfigs();
-    expect(configs.orchestrator).toBeDefined();
-    expect(configs.explorer).toBeDefined();
-    // orchestrator has no hardcoded default model; resolved at runtime via
+    expect(configs.Ra).toBeDefined();
+    expect(configs.Horus).toBeDefined();
+    // Ra has no hardcoded default model; resolved at runtime via
     // chat.message hook when _modelArray is configured, or left to the user
-    expect(configs.explorer.model).toBeDefined();
+    expect(configs.Horus.model).toBeDefined();
   });
 
   test('includes description in SDK config', () => {
     const configs = getAgentConfigs();
-    expect(configs.orchestrator.description).toBeDefined();
-    expect(configs.explorer.description).toBeDefined();
+    expect(configs.Ra.description).toBeDefined();
+    expect(configs.Horus.description).toBeDefined();
   });
 });

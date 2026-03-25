@@ -1,18 +1,18 @@
 // Agent names
 export const AGENT_ALIASES: Record<string, string> = {
-  explore: 'explorer',
-  'frontend-ui-ux-engineer': 'designer',
+  explore: 'Horus',
+  'frontend-ui-ux-engineer': 'Bastet',
 };
 
 export const SUBAGENT_NAMES = [
-  'explorer',
-  'librarian',
-  'oracle',
-  'designer',
-  'fixer',
+  'Horus',
+  'Thoth',
+  'Oracle',
+  'Bastet',
+  'Anubis',
 ] as const;
 
-export const ORCHESTRATOR_NAME = 'orchestrator' as const;
+export const ORCHESTRATOR_NAME = 'Ra' as const;
 
 export const ALL_AGENT_NAMES = [ORCHESTRATOR_NAME, ...SUBAGENT_NAMES] as const;
 
@@ -20,29 +20,29 @@ export const ALL_AGENT_NAMES = [ORCHESTRATOR_NAME, ...SUBAGENT_NAMES] as const;
 export type AgentName = (typeof ALL_AGENT_NAMES)[number];
 
 // Subagent delegation rules: which agents can spawn which subagents
-// orchestrator: can spawn all subagents (full delegation)
-// fixer: leaf node — prompt forbids delegation; use grep/glob for lookups
-// designer: can spawn explorer (for research during design)
-// explorer/librarian/oracle: cannot spawn any subagents (leaf nodes)
-// Unknown agent types not listed here default to explorer-only access
+// Ra: can spawn all subagents (full delegation)
+// Anubis: leaf node — prompt forbids delegation; use grep/glob for lookups
+// Bastet: can spawn Horus (for research during design)
+// Horus/Thoth/Oracle: cannot spawn any subagents (leaf nodes)
+// Unknown agent types not listed here default to Horus-only access
 export const SUBAGENT_DELEGATION_RULES: Record<AgentName, readonly string[]> = {
-  orchestrator: SUBAGENT_NAMES,
-  fixer: [],
-  designer: [],
-  explorer: [],
-  librarian: [],
-  oracle: [],
+  Ra: SUBAGENT_NAMES,
+  Anubis: [],
+  Bastet: [],
+  Horus: [],
+  Thoth: [],
+  Oracle: [],
 };
 
 // Default models for each agent
-// orchestrator is undefined so its model is fully resolved at runtime via priority fallback
+// Ra is undefined so its model is fully resolved at runtime via priority fallback
 export const DEFAULT_MODELS: Record<AgentName, string | undefined> = {
-  orchestrator: undefined,
-  oracle: 'openai/gpt-5.4',
-  librarian: 'openai/gpt-5.4-mini',
-  explorer: 'openai/gpt-5.4-mini',
-  designer: 'openai/gpt-5.4-mini',
-  fixer: 'openai/gpt-5.4-mini',
+  Ra: undefined,
+  Oracle: 'openai/gpt-5.4',
+  Thoth: 'openai/gpt-5.4-mini',
+  Horus: 'openai/gpt-5.4-mini',
+  Bastet: 'openai/gpt-5.4-mini',
+  Anubis: 'openai/gpt-5.4-mini',
 };
 
 // Polling configuration

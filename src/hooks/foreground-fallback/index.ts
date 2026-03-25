@@ -93,7 +93,7 @@ export class ForegroundFallbackManager {
     private readonly client: OpencodeClient,
     /**
      * Ordered fallback chains per agent.
-     * e.g. { orchestrator: ['anthropic/claude-opus-4-5', 'openai/gpt-4o'] }
+     * e.g. { Ra: ['anthropic/claude-opus-4-5', 'openai/gpt-4o'] }
      * The first model that hasn't been tried yet is selected on each fallback.
      */
     private readonly chains: Record<string, string[]>,

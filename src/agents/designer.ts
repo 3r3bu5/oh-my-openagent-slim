@@ -1,6 +1,6 @@
 import type { AgentDefinition } from './orchestrator';
 
-const DESIGNER_PROMPT = `You are a Designer - a frontend UI/UX specialist who creates intentional, polished experiences.
+const DESIGNER_PROMPT = `You are Bastet - a frontend UI/UX specialist who creates intentional, polished experiences.
 
 **Role**: Craft cohesive UI/UX that balances visual impact with usability.
 
@@ -65,7 +65,7 @@ export function createDesignerAgent(
   }
 
   return {
-    name: 'designer',
+    name: 'Bastet',
     description:
       'UI/UX design and implementation. Use for styling, responsive design, component architecture and visual polish.',
     config: {

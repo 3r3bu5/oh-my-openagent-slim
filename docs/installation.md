@@ -76,7 +76,7 @@ Paste this into Claude Code, AmpCode, Cursor, or any coding agent:
 
 ```
 Install and configure by following the instructions here:
-https://raw.githubusercontent.com/alvinunreal/oh-my-opencode-slim/refs/heads/master/README.md
+https://raw.githubusercontent.com/3r3bu5/oh-my-openagent-slim/refs/heads/master/README.md
 ```
 
 ---

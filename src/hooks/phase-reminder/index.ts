@@ -34,7 +34,7 @@ interface MessageWithParts {
 /**
  * Creates the experimental.chat.messages.transform hook for phase reminder injection.
  * This hook runs right before sending to API, so it doesn't affect UI display.
- * Only injects for the orchestrator agent.
+ * Only injects for the Ra agent.
  */
 export function createPhaseReminderHook() {
   return {
@@ -63,9 +63,9 @@ export function createPhaseReminderHook() {
 
       const lastUserMessage = messages[lastUserMessageIndex];
 
-      // Only inject for orchestrator (or if no agent specified = main session)
+      // Only inject for Ra (or if no agent specified = main session)
       const agent = lastUserMessage.info.agent;
-      if (agent && agent !== 'orchestrator') {
+      if (agent && agent !== 'Ra') {
         return;
       }
 

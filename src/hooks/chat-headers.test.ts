@@ -30,7 +30,7 @@ function createInput(
 ) {
   return {
     sessionID: 'session-1',
-    agent: 'orchestrator',
+    agent: 'Ra',
     model: {
       id: 'github-copilot/claude',
       providerID: overrides?.providerID ?? 'github-copilot',
@@ -83,7 +83,7 @@ function createInput(
       sessionID: 'session-1',
       role: 'user' as const,
       time: { created: Date.now() },
-      agent: 'orchestrator',
+      agent: 'Ra',
       model: {
         providerID: 'github-copilot',
         modelID: 'claude',

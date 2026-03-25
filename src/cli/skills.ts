@@ -41,14 +41,14 @@ export const RECOMMENDED_SKILLS: RecommendedSkill[] = [
     name: 'simplify',
     repo: 'https://github.com/brianlovin/claude-config',
     skillName: 'simplify',
-    allowedAgents: ['orchestrator'],
+    allowedAgents: ['Ra'],
     description: 'YAGNI code simplification expert',
   },
   {
     name: 'agent-browser',
     repo: 'https://github.com/vercel-labs/agent-browser',
     skillName: 'agent-browser',
-    allowedAgents: ['designer'],
+    allowedAgents: ['Bastet'],
     description: 'High-performance browser automation',
     postInstallCommands: [
       'npm install -g agent-browser',
@@ -64,7 +64,7 @@ export const RECOMMENDED_SKILLS: RecommendedSkill[] = [
 export const PERMISSION_ONLY_SKILLS: PermissionOnlySkill[] = [
   {
     name: 'requesting-code-review',
-    allowedAgents: ['oracle'],
+    allowedAgents: ['Oracle'],
     description:
       'Code review template for reviewer subagents in multi-step workflows',
   },
@@ -126,7 +126,7 @@ export function getSkillPermissionsForAgent(
 ): Record<string, 'allow' | 'ask' | 'deny'> {
   // Orchestrator gets all skills by default, others are restricted
   const permissions: Record<string, 'allow' | 'ask' | 'deny'> = {
-    '*': agentName === 'orchestrator' ? 'allow' : 'deny',
+    '*': agentName === 'Ra' ? 'allow' : 'deny',
   };
 
   // If the user provided an explicit skill list (even empty), honor it

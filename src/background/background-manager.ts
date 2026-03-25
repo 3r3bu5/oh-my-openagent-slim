@@ -133,14 +133,14 @@ export class BackgroundTaskManager {
 
   /**
    * Look up the delegation rules for an agent type.
-   * Unknown agent types default to explorer-only access, making it easy
+   * Unknown agent types default to Horus-only access, making it easy
    * to add new background agent types without updating SUBAGENT_DELEGATION_RULES.
    */
   private getSubagentRules(agentName: string): readonly string[] {
     return (
       SUBAGENT_DELEGATION_RULES[
         agentName as keyof typeof SUBAGENT_DELEGATION_RULES
-      ] ?? ['explorer']
+      ] ?? ['Horus']
     );
   }
 
@@ -151,9 +151,8 @@ export class BackgroundTaskManager {
    * @returns true if allowed, false if not
    */
   isAgentAllowed(parentSessionId: string, requestedAgent: string): boolean {
-    // Untracked sessions are the root orchestrator (created by OpenCode, not by us)
-    const parentAgentName =
-      this.agentBySessionId.get(parentSessionId) ?? 'orchestrator';
+    // Untracked sessions are the root Ra (created by OpenCode, not by us)
+    const parentAgentName = this.agentBySessionId.get(parentSessionId) ?? 'Ra';
 
     const allowedSubagents = this.getSubagentRules(parentAgentName);
 
@@ -168,9 +167,8 @@ export class BackgroundTaskManager {
    * @returns Array of allowed agent names, empty if none
    */
   getAllowedSubagents(parentSessionId: string): readonly string[] {
-    // Untracked sessions are the root orchestrator (created by OpenCode, not by us)
-    const parentAgentName =
-      this.agentBySessionId.get(parentSessionId) ?? 'orchestrator';
+    // Untracked sessions are the root Ra (created by OpenCode, not by us)
+    const parentAgentName = this.agentBySessionId.get(parentSessionId) ?? 'Ra';
 
     return this.getSubagentRules(parentAgentName);
   }

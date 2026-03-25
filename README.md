@@ -51,7 +51,7 @@ Paste this into any coding agent:
 
 ```
 Install and configure by following the instructions here:
-https://raw.githubusercontent.com/alvinunreal/oh-my-opencode-slim/refs/heads/master/README.md
+https://raw.githubusercontent.com/3r3bu5/oh-my-openagent-slim/refs/heads/master/README.md
 ```
 
 **Detailed installation guide:** [docs/installation.md](docs/installation.md)
@@ -91,7 +91,7 @@ If any agent fails to respond, check your provider authentication and config fil
 <table>
   <tr>
     <td width="30%" align="center" valign="top">
-      <img src="img/orchestrator.png" width="240" style="border-radius: 10px;">
+      <img src="img/Ra.png" width="240" style="border-radius: 10px;">
       <br><sub><i>Forged in the void of complexity.</i></sub>
     </td>
     <td width="70%" valign="top">
@@ -105,7 +105,7 @@ If any agent fails to respond, check your provider authentication and config fil
   </tr>
   <tr>
     <td colspan="2">
-      <b>Prompt:</b> <a href="src/agents/orchestrator.ts"><code>orchestrator.ts</code></a>
+      <b>Prompt:</b> <a href="src/agents/Ra.ts"><code>Ra.ts</code></a>
     </td>
   </tr>
   <tr>
@@ -122,7 +122,7 @@ If any agent fails to respond, check your provider authentication and config fil
 
 ---
 
-### 02. Explorer: The Eternal Wanderer
+### 02. Horus: The Eternal Wanderer
 
 <table>
   <tr>
@@ -131,7 +131,7 @@ If any agent fails to respond, check your provider authentication and config fil
       <br><sub><i>The wind that carries knowledge.</i></sub>
     </td>
     <td width="70%" valign="top">
-      The Explorer is an immortal wanderer who has traversed the corridors of a million codebases since the dawn of programming. Cursed with the gift of eternal curiosity, they cannot rest until every file is known, every pattern understood, every secret revealed. Legends say they once searched the entire internet in a single heartbeat. They are the wind that carries knowledge, the eyes that see all, the spirit that never sleeps.
+      The Horus is an immortal wanderer who has traversed the corridors of a million codebases since the dawn of programming. Cursed with the gift of eternal curiosity, they cannot rest until every file is known, every pattern understood, every secret revealed. Legends say they once searched the entire internet in a single heartbeat. They are the wind that carries knowledge, the eyes that see all, the spirit that never sleeps.
     </td>
   </tr>
   <tr>
@@ -194,7 +194,7 @@ If any agent fails to respond, check your provider authentication and config fil
 
 ---
 
-### 04. Librarian: The Weaver of Knowledge
+### 04. Thoth: The Weaver of Knowledge
 
 <table>
   <tr>
@@ -203,7 +203,7 @@ If any agent fails to respond, check your provider authentication and config fil
       <br><sub><i>The weaver of understanding.</i></sub>
     </td>
     <td width="70%" valign="top">
-      The Librarian was forged when humanity realized that no single mind could hold all knowledge. They are the weaver who connects disparate threads of information into a tapestry of understanding. They traverse the infinite library of human knowledge, gathering insights from every corner and binding them into answers that transcend mere facts. What they return is not information - it's understanding.
+      The Thoth was forged when humanity realized that no single mind could hold all knowledge. They are the weaver who connects disparate threads of information into a tapestry of understanding. They traverse the infinite library of human knowledge, gathering insights from every corner and binding them into answers that transcend mere facts. What they return is not information - it's understanding.
     </td>
   </tr>
   <tr>
@@ -230,7 +230,7 @@ If any agent fails to respond, check your provider authentication and config fil
 
 ---
 
-### 05. Designer: The Guardian of Aesthetics
+### 05. Bastet: The Guardian of Aesthetics
 
 <table>
   <tr>
@@ -239,7 +239,7 @@ If any agent fails to respond, check your provider authentication and config fil
       <br><sub><i>Beauty is essential.</i></sub>
     </td>
     <td width="70%" valign="top">
-      The Designer is an immortal guardian of beauty in a world that often forgets it matters. They have seen a million interfaces rise and fall, and they remember which ones were remembered and which were forgotten. They carry the sacred duty to ensure that every pixel serves a purpose, every animation tells a story, every interaction delights. Beauty is not optional - it's essential.
+      The Bastet is an immortal guardian of beauty in a world that often forgets it matters. They have seen a million interfaces rise and fall, and they remember which ones were remembered and which were forgotten. They carry the sacred duty to ensure that every pixel serves a purpose, every animation tells a story, every interaction delights. Beauty is not optional - it's essential.
     </td>
   </tr>
   <tr>
@@ -266,7 +266,7 @@ If any agent fails to respond, check your provider authentication and config fil
 
 ---
 
-### 06. Fixer: The Last Builder
+### 06. Anubis: The Last Builder
 
 <table>
   <tr>
@@ -275,7 +275,7 @@ If any agent fails to respond, check your provider authentication and config fil
       <br><sub><i>The final step between vision and reality.</i></sub>
     </td>
     <td width="70%" valign="top">
-      The Fixer is the last of a lineage of builders who once constructed the foundations of the digital world. When the age of planning and debating began, they remained - the ones who actually build. They carry the ancient knowledge of how to turn thought into thing, how to transform specification into implementation. They are the final step between vision and reality.
+      The Anubis is the last of a lineage of builders who once constructed the foundations of the digital world. When the age of planning and debating began, they remained - the ones who actually build. They carry the ancient knowledge of how to turn thought into thing, how to transform specification into implementation. They are the final step between vision and reality.
     </td>
   </tr>
   <tr>

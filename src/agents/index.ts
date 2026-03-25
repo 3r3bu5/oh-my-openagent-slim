@@ -94,11 +94,11 @@ export function isSubagent(name: string): name is SubagentName {
 // Agent Factories
 
 const SUBAGENT_FACTORIES: Record<SubagentName, AgentFactory> = {
-  explorer: createExplorerAgent,
-  librarian: createLibrarianAgent,
-  oracle: createOracleAgent,
-  designer: createDesignerAgent,
-  fixer: createFixerAgent,
+  Horus: createExplorerAgent,
+  Thoth: createLibrarianAgent,
+  Oracle: createOracleAgent,
+  Bastet: createDesignerAgent,
+  Anubis: createFixerAgent,
 };
 
 // Public API
@@ -111,19 +111,19 @@ const SUBAGENT_FACTORIES: Record<SubagentName, AgentFactory> = {
  * @returns Array of agent definitions (orchestrator first, then subagents)
  */
 export function createAgents(config?: PluginConfig): AgentDefinition[] {
-  // TEMP: If fixer has no config, inherit from librarian's model to avoid breaking
-  // existing users who don't have fixer in their config yet
+  // TEMP: If Anubis has no config, inherit from Thoth's model to avoid breaking
+  // existing users who don't have Anubis in their config yet
   const getModelForAgent = (name: SubagentName): string => {
-    if (name === 'fixer' && !getAgentOverride(config, 'fixer')?.model) {
-      const librarianOverride = getAgentOverride(config, 'librarian')?.model;
-      let librarianModel: string | undefined;
-      if (Array.isArray(librarianOverride)) {
-        const first = librarianOverride[0];
-        librarianModel = typeof first === 'string' ? first : first?.id;
+    if (name === 'Anubis' && !getAgentOverride(config, 'Anubis')?.model) {
+      const ThothOverride = getAgentOverride(config, 'Thoth')?.model;
+      let ThothModel: string | undefined;
+      if (Array.isArray(ThothOverride)) {
+        const first = ThothOverride[0];
+        ThothModel = typeof first === 'string' ? first : first?.id;
       } else {
-        librarianModel = librarianOverride;
+        ThothModel = ThothOverride;
       }
-      return librarianModel ?? (DEFAULT_MODELS.librarian as string);
+      return ThothModel ?? (DEFAULT_MODELS.Thoth as string);
     }
     // Subagents always have a defined default model; cast is safe here
     return DEFAULT_MODELS[name] as string;
@@ -151,24 +151,23 @@ export function createAgents(config?: PluginConfig): AgentDefinition[] {
     return agent;
   });
 
-  // 3. Create Orchestrator (with its own overrides and custom prompts)
-  // DEFAULT_MODELS.orchestrator is undefined; model is resolved via override or
+  // 3. Create Ra (with its own overrides and custom prompts)
+  // DEFAULT_MODELS.Ra is undefined; model is resolved via override or
   // left unset so the runtime chat.message hook can pick it from _modelArray.
-  const orchestratorOverride = getAgentOverride(config, 'orchestrator');
-  const orchestratorModel =
-    orchestratorOverride?.model ?? DEFAULT_MODELS.orchestrator;
-  const orchestratorPrompts = loadAgentPrompt('orchestrator', config?.preset);
-  const orchestrator = createOrchestratorAgent(
-    orchestratorModel,
-    orchestratorPrompts.prompt,
-    orchestratorPrompts.appendPrompt,
+  const RaOverride = getAgentOverride(config, 'Ra');
+  const RaModel = RaOverride?.model ?? DEFAULT_MODELS.Ra;
+  const RaPrompts = loadAgentPrompt('Ra', config?.preset);
+  const Ra = createOrchestratorAgent(
+    RaModel,
+    RaPrompts.prompt,
+    RaPrompts.appendPrompt,
   );
-  applyDefaultPermissions(orchestrator, orchestratorOverride?.skills);
-  if (orchestratorOverride) {
-    applyOverrides(orchestrator, orchestratorOverride);
+  applyDefaultPermissions(Ra, RaOverride?.skills);
+  if (RaOverride) {
+    applyOverrides(Ra, RaOverride);
   }
 
-  return [orchestrator, ...allSubAgents];
+  return [Ra, ...allSubAgents];
 }
 
 /**
@@ -193,7 +192,7 @@ export function getAgentConfigs(
       // Apply classification-based visibility and mode
       if (isSubagent(a.name)) {
         sdkConfig.mode = 'subagent';
-      } else if (a.name === 'orchestrator') {
+      } else if (a.name === 'Ra') {
         sdkConfig.mode = 'primary';
       }
 

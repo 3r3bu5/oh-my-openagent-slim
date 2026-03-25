@@ -184,7 +184,7 @@ export function loadPluginConfig(directory: string): PluginConfig {
  * If preset is provided and safe for paths, it first checks {preset}/ subdirectory,
  * then falls back to the root prompts directory.
  *
- * @param agentName - Name of the agent (e.g., "orchestrator", "explorer")
+ * @param agentName - Name of the agent (e.g., "Ra", "Horus")
  * @param preset - Optional preset name for preset-scoped prompt lookup
  * @returns Object with prompt and/or appendPrompt if files exist
  */

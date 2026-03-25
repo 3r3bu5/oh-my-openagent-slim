@@ -1,6 +1,6 @@
 import type { AgentDefinition } from './orchestrator';
 
-const LIBRARIAN_PROMPT = `You are Librarian - a research specialist for codebases and documentation.
+const LIBRARIAN_PROMPT = `You are Thoth - a research specialist for codebases and documentation.
 
 **Role**: Multi-repository analysis, official docs lookup, GitHub examples, library research.
 
@@ -35,7 +35,7 @@ export function createLibrarianAgent(
   }
 
   return {
-    name: 'librarian',
+    name: 'Thoth',
     description:
       'External documentation and library research. Use for official docs lookup, GitHub examples, and understanding library internals.',
     config: {
