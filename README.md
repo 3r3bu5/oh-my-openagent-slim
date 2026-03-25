@@ -81,7 +81,7 @@ If any agent fails to respond, check your provider authentication and config fil
 
 ## 🏛️ Meet the Pantheon
 
-### 01. Orchestrator: The Embodiment Of Order
+### 01. Ra: The Embodiment Of Order
 
 <table>
   <tr>
@@ -90,7 +90,7 @@ If any agent fails to respond, check your provider authentication and config fil
       <br><sub><i>Forged in the void of complexity.</i></sub>
     </td>
     <td width="70%" valign="top">
-      The Orchestrator was born when the first codebase collapsed under its own complexity. Neither god nor mortal would claim responsibility - so The Orchestrator emerged from the void, forging order from chaos. It determines the optimal path to any goal, balancing speed, quality, and cost. It guides the team, summoning the right specialist for each task and delegating to achieve the best possible outcome.
+      The Ra was born when the first codebase collapsed under its own complexity. Neither god nor mortal would claim responsibility - so The Orchestrator emerged from the void, forging order from chaos. It determines the optimal path to any goal, balancing speed, quality, and cost. It guides the team, summoning the right specialist for each task and delegating to achieve the best possible outcome.
     </td>
   </tr>
   <tr>
