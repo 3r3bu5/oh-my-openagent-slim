@@ -12,7 +12,7 @@
 ### Quick Start
 
 ```bash
-bunx oh-my-opencode-slim@latest install
+bunx @a4hgehad/oh-my-openagent-slim@latest install
 ```
 
 The installer generates an OpenAI configuration by default (using `gpt-5.4` and `gpt-5.4-mini`). No provider questions asked.
@@ -20,12 +20,12 @@ The installer generates an OpenAI configuration by default (using `gpt-5.4` and 
 For non-interactive mode:
 
 ```bash
-bunx oh-my-opencode-slim@latest install --no-tui --tmux=no --skills=yes
+bunx @a4hgehad/oh-my-openagent-slim@latest install --no-tui --tmux=no --skills=yes
 ```
 
 To force overwrite of an existing configuration:
 ```bash
-bunx oh-my-opencode-slim@latest install --reset
+bunx @a4hgehad/oh-my-openagent-slim@latest install --reset
 ```
 
 ### For Alternative Providers
@@ -38,7 +38,7 @@ An official JSON Schema is included in the package for editor validation and aut
 
 ```jsonc
 {
-  "$schema": "https://unpkg.com/oh-my-opencode-slim@latest/oh-my-opencode-slim.schema.json",
+  "$schema": "https://unpkg.com/@a4hgehad/oh-my-openagent-slim@latest/@a4hgehad/oh-my-openagent-slim.schema.json",
   // your config...
 }
 ```
@@ -317,9 +317,3 @@ If any agent fails to respond, check your provider authentication and config fil
 
 MIT
 
----
-
-<!-- MoltFounders Banner -->
-<a href="https://moltfounders.com/jobs/09d1c6e7-9e0e-4683-8d78-e2376aaa2333">
-  <img src="img/moltfounders-banner.png" alt="MoltFounders - The Agent Co-Founder Network">
-</a>

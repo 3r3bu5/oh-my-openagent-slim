@@ -1,10 +1,10 @@
 # Provider Configurations
 
-oh-my-opencode-slim uses **OpenAI** as the default provider. This document shows how to configure alternative providers by editing your plugin config file.
+oh-my-openagent-slim uses **OpenAI** as the default provider. This document shows how to configure alternative providers by editing your plugin config file.
 
 ## Config File Location
 
-Edit `~/.config/opencode/oh-my-opencode-slim.json` (or `.jsonc` for comments support).
+Edit `~/.config/opencode/oh-my-openagent-slim.json` (or `.jsonc` for comments support).
 
 ## Default: OpenAI
 
