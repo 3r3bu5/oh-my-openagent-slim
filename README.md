@@ -75,11 +75,6 @@ Then run:
 ping all agents
 ```
 
-<div align="center">
-  <img src="img/ping.png" alt="Ping all agents" width="600">
-  <p><i>Confirmation that all six agents are online and ready.</i></p>
-</div>
-
 If any agent fails to respond, check your provider authentication and config file.
 
 ---
